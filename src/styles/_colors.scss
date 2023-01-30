@@ -1,0 +1,14 @@
+
+$light: #e8eddf;
+$blue: #cfdbd5;
+$yellow: #f5cb5c;
+$grey: #333533;
+$dark: #242423;
+
+$primary:       $blue;
+$secondary:     $yellow;
+$success:       $grey;
+
+$base-bg-color: linear-gradient(175deg, $success ,#000000);
+
+@import "~bootstrap/scss/bootstrap";
