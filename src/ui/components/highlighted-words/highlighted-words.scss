@@ -1,0 +1,6 @@
+@import '../../../styles/colors';
+
+.highlighted-words{
+    color: transparent;
+    -webkit-text-stroke: 2px $primary;
+}
