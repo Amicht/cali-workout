@@ -2,7 +2,7 @@ import './costum-btn.scss'
 
 interface CostumBtnI{
   txt:string,
-  theme: "light" | "dark" | "secondary"
+  theme: "light" | "dark" | "secondary",
 }
 
 const CostumBtn = (props:CostumBtnI) => {

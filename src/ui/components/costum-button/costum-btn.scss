@@ -3,10 +3,11 @@
 .costum-btn{
     border: none;
     border-radius: 0 0 30px 0;
-    font-size: 15px;
+    font-size: 20px;
     height: fit-content;
-    min-height: 55px;
-    width: 100%;
+    min-height: 60px;
+    width: fit-content;
+    min-width: 100%;
 
     &.costum-light-btn{
         color: darken($secondary, 20%);
@@ -27,9 +28,9 @@
     &.costum-secondary-btn{
         border: 2px solid $dark;
         color: $light;
-        background-color: $secondary;
+        background-color: darken($secondary, 10%);
         &:hover{
-            background-color: darken($secondary, 10%);
+            background-color: darken($secondary, 20%);
         }
     }
 }
