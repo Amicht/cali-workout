@@ -1,0 +1,115 @@
+{
+    "homeScreen": {
+        "title": [
+            {
+                "txt": "NO EQUIPMENT. NO ",
+                "ishighlighted": false
+            },
+            {
+                "txt": "EXCUSES.",
+                "ishighlighted": true
+            }
+        ],
+        "subtitle": "Let us help you to create your own body-weight program, costumized to your abillities and strength",
+        "actionBtns": [
+            "Get Started", 
+            "Learn More"
+        ]
+    },
+    "plansScreen":{
+        "title": [
+            {
+                "txt": "READY TO START ",
+                "ishighlighted": true
+            },
+            {
+                "txt": "YOUR JOURNEY ",
+                "ishighlighted": false
+            },
+            {
+                "txt": "NOW WITH US",
+                "ishighlighted": true
+            }
+        ],
+        "subtitle": "Start your journey with us to get a balance and healthy body. You can choose the free plan and start right away.",
+        "plans": [
+            {
+                "name": "FREE PLAN",
+                "price": 0,
+                "features": [
+                    "2 hours of exercises",
+                    "Free consultation to coaches",
+                    "Access to the FitClub community"
+                ]
+            },
+            {
+                "name": "PREMIUM PLAN",
+                "price": 25,
+                "features": [
+                    "5 hours of exercises",
+                    "Free consultation to coaches",
+                    "Access to minibar"
+                ]
+            },
+            {
+                "name": "PRO PLAN",
+                "price": 35,
+                "features": [
+                    "8 hours of exercises",
+                    "Free consultation to private coaches",
+                    "Free fitness marchandise"
+                ]
+            }
+        ]
+    },
+    "chooseProgramScreen":{
+        "title": [
+            {
+                "txt": "CHOOSE ",
+                "ishighlighted": true
+            },
+            {
+                "txt": "YOUR PROGRAM",
+                "ishighlighted": false
+            }
+        ],
+        "subtitle": "For each muscle group, choose a muscle and then select one exercise from results.",
+        "muscleGroups": [
+            {
+                "name": "Pull",
+                "muscles":[
+                    "biceps",
+                    "forearms",
+                    "lats",
+                    "middle_back",
+                    "traps"
+                ]
+            },
+            {
+                "name": "Push",
+                "muscles":[
+                    "chest",
+                    "triceps"
+                ]
+            },
+            {
+                "name": "Abs",
+                "muscles":[
+                    "abdominals",
+                    "abductors",
+                    "lower_back"
+                ]
+            },
+            {
+                "name": "Squat",
+                "muscles":[
+                    "calves",
+                    "glutes",
+                    "hamstrings",
+                    "quadriceps",
+                    "adductors"
+                ]
+            }
+        ]
+    }
+}
