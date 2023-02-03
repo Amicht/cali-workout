@@ -1,0 +1,13 @@
+@import '../../../styles/colors';
+
+.app-navbar{
+
+    .link{
+        text-decoration: none;
+        color: $primary;
+        margin-right: 10px;
+        &:hover{
+            color: darken($primary,10%);
+        }
+    }
+}
