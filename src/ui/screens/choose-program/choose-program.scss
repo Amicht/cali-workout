@@ -1,0 +1,20 @@
+@import '../../../styles/colors';
+
+
+
+
+.muscle-modal{
+
+    .modal-body{
+
+        background: linear-gradient(90deg, darken($success, 10%), $success);
+        .exercise-card{
+            color: $light;
+            margin-top: 10px;
+            padding: 10px;
+            min-height: fit-content;
+            border-radius: 0 0 40px 0;
+        }
+    }
+
+}

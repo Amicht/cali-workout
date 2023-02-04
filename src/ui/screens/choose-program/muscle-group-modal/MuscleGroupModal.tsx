@@ -3,29 +3,47 @@ import { Button } from 'react-bootstrap';
 import {Modal} from 'react-bootstrap/esm/';
 import './muscle-group-modal.scss';
 import locales from '../../../../assets/locales/en.json';
-import testData from '../../../../data/data.json';
 import ExerciseCard from '../exercise-card/ExerciseCard';
 import { ExerciseModel } from '../../../../models/ExerciseModel';
 import Form from 'react-bootstrap/Form';
+import { WorkourProgramCtxt } from '../../../../services/context/WorkoutProgramService';
+import CostumBtn from '../../../components/costum-button/CostumBtn';
+import CostumLeftBtn from '../../../components/costum-button/costumeLeftBtn';
 
-const MuscleGroupModal = (props:{show:boolean, handleClose:() => void, muscle:string}) => {
+interface Props{
+  show:boolean, handleClose:() => void, 
+  muscleGroupName:string,
+  muscleName: string
+}
+
+const MuscleGroupModal = (props:Props) => {
     
+    const workoutCtxt = React.useContext(WorkourProgramCtxt);
+    const screenTxts = locales.chooseProgramScreen;
     const [exerciseName, setExerciseName] = React.useState<string | null>(null);
     const [exercise, setExercise] = React.useState<ExerciseModel | null>(null);
     const onCloseHandler = () => {
         setExercise(null);
         setExerciseName(null);
         props.handleClose();
-    }
-    const onExerciseChange = (exName:string) => {
+      }
+      const onExerciseChange = (exName:string) => {
         setExerciseName(exName);
-        // setExercise(exercise);
+        console.log(exName);
+      }
+      const onAddExerciseBtnClick = () => {
+        workoutCtxt.funcs.updateUserExerciseToProgram(props.muscleGroupName,exerciseName)
+        .then(() => {
+          onCloseHandler()
+        })
     }
     
     React.useEffect( () => {
-        
-        if(!exerciseName && props.show) setExercise(testData[0])
-        else if(props.show) setExercise(testData.filter(ex => ex.name === exerciseName)[0]);
+        if(!exerciseName && props.show) {
+          setExercise(workoutCtxt.states.exercises[0] );
+          setExerciseName(workoutCtxt.states.exercises[0].name);
+        }
+        else if(props.show) setExercise(workoutCtxt.states.exercises.filter((ex:ExerciseModel) => ex.name === exerciseName)[0]);
     }, [exerciseName, props.show]);
 
     return (
@@ -41,9 +59,9 @@ const MuscleGroupModal = (props:{show:boolean, handleClose:() => void, muscle:st
           <Modal.Header closeButton className='text-secondary'>
             
             <Modal.Title className='row col-md-10'>
-                <span className='col-sm-5'>{locales.chooseProgramScreen.modalTitle} </span>
-                {(testData.length > 0)?<Form.Select className='col-sm' onChange={(e) => onExerciseChange(e.currentTarget.value)}>
-                {testData.map((exrcs,idx) => 
+                <span className='col-sm-5'>{screenTxts.modalTitle} </span>
+                {(workoutCtxt.states.exercises.length > 0)?<Form.Select className='col-sm' onChange={(e) => onExerciseChange(e.currentTarget.value)}>
+                {workoutCtxt.states.exercises.map((exrcs:ExerciseModel,idx:number) => 
                         <option value={exrcs.name} key={idx}>{exrcs.name}</option>
                     )}
                 </Form.Select>:null}
@@ -60,9 +78,12 @@ const MuscleGroupModal = (props:{show:boolean, handleClose:() => void, muscle:st
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary" color='primary'  onClick={onCloseHandler}>
-              Close
-            </Button>
+            <div onClick={onCloseHandler} className='col-md-3'>
+              <CostumLeftBtn theme={'dark'} txt={'close'}/>
+            </div>
+            <div onClick={onAddExerciseBtnClick} className='col-md-3'>
+              <CostumBtn theme={'light'} txt={screenTxts.modalBtns.add}/>
+            </div>
           </Modal.Footer>
 
         </Modal>
