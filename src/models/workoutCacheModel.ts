@@ -1,27 +1,30 @@
-import { ExerciseModel } from "./WorkoutModel";
+import { ExerciseModel } from "./ExerciseModel";
 
 
 export interface MusleGroupProgramDefs{
-    exercise: ExerciseModel | null,
-    time?: number,
-    rep?: number
+    exercise: ExerciseModel | null;
+    time?: number;
+    rep?: number;
 }
 
 export interface ProgramMuscleGroups{
-    pull: MusleGroupProgramDefs
-    push: MusleGroupProgramDefs
-    squat: MusleGroupProgramDefs
-    core: MusleGroupProgramDefs
+    pull: MusleGroupProgramDefs;
+    push: MusleGroupProgramDefs;
+    squat: MusleGroupProgramDefs;
+    core: MusleGroupProgramDefs;
 }
 
 export interface ProgramSetDefs{
-    target:number,
-    current: number 
+    target:number;
+    current: number; 
+    break:{
+        sets:number,
+        exrcs: number
+    }
 }
 
 
 export interface WorkoutCacheModel{
-    mslGrp:ProgramMuscleGroups,
-    sets?:ProgramSetDefs,
-
+    mslGrp:ProgramMuscleGroups;
+    sets?:ProgramSetDefs;
 }
