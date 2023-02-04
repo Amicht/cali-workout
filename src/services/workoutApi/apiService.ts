@@ -1,17 +1,13 @@
 import axios from 'axios';
-import { ExerciseModel } from "../../models/WorkoutModel";
+import { ExerciseModel } from "../../models/ExerciseModel";
 import testData from '../../data/data.json';
+import { ApiQueryParamsI } from '../../models/ApiQueryParamsI';
 
 
 const APIKEY = "gyQd309gy5ZHfmDwWJVbrw==UKKBGeuLvOWeU6u7";
 const SERVERURL = "https://api.api-ninjas.com/v1/exercises";
 
 
-interface ApiQueryParamsI{
-    muscle?:string,
-    type?:string, 
-    difficulty?:string
-}
 
 
 const getQueryString = (apiCallParams:ApiQueryParamsI) => {
@@ -25,6 +21,7 @@ const getQueryString = (apiCallParams:ApiQueryParamsI) => {
 
 const getExercises = async (apiCallParams:ApiQueryParamsI) => {
     
+    /*
     const queryString = getQueryString(apiCallParams);
     
     const excercises:ExerciseModel[] = await axios
@@ -34,18 +31,16 @@ const getExercises = async (apiCallParams:ApiQueryParamsI) => {
             'Content-Type': 'application/json'
         }})
     .then(res => res!.data);
-    
-    return excercises;
-}
 
-const getTestExercises = (apiCallParams:ApiQueryParamsI) => {
+    return excercises;
+    */
     
-    console.log(apiCallParams);
+
+    // while testing:
     return testData;
 }
 
-export {
-    getExercises,
-    getTestExercises
-}
 
+export {
+    getExercises
+}
