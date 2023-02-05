@@ -1,77 +1,77 @@
 {
-    "language": "English",
-    "direction": "ltr",
+    "language": "עברית",
+    "direction": "rtl",
     "navbar":{
         "icon": "",
-        "home": "Home",
-        "get_started": "Get Started",
+        "home": "דף הבית",
+        "get_started": "בחר תוכנית",
         "language": {
-            "btn_name": "language",
-            "modal_title": "Choose Language:",
-            "close_btn": "close"
+            "btn_name": "שפה",
+            "modal_title": "בחר שפה: ",
+            "close_btn": "סגור"
         }
     },
     "homeScreen": {
         "route": "/",
         "title": [
             {
-                "txt": "NO EQUIPMENT. NO ",
+                "txt": "בלי ציוד. בלי ",
                 "ishighlighted": false
             },
             {
-                "txt": "EXCUSES.",
+                "txt": "תירוצים.",
                 "ishighlighted": true
             }
         ],
-        "subtitle": "Let us help you to create your own full-body workout program, costumized to your abillities and strength",
+        "subtitle": "תן לנו לעזור לך ליצור תכנית אימוני גוף, מותאמת אישית לכח והיכולות שלך.",
         "actionBtns": [
-            "Get Started", 
-            "Learn More"
+            "התחל", 
+            "עוד מידע"
         ]
     },
     "plansScreen":{
         "route": "/get-started",
         "title": [
             {
-                "txt": "READY TO START ",
+                "txt": "מוכן להתחיל את ",
                 "ishighlighted": true
             },
             {
-                "txt": "YOUR JOURNEY ",
+                "txt": "המסע שלך ",
                 "ishighlighted": false
             },
             {
-                "txt": "NOW WITH US",
+                "txt": "איתנו",
                 "ishighlighted": true
             }
         ],
-        "subtitle": "Start your journey with us to get a balance and healthy body. You can choose the free plan and start right away.",
+        "subtitle": "התחל במסע שלך לעבר גוף מאוזן ובריא יותר. אתב יכול לבחור בתוכנית חינמית ולהתחיל מיד.",
         "plans": [
             {
-                "name": "FREE PLAN",
+                "name": "תוכנית חינמית",
                 "price": 0,
                 "features": [
-                    "2 hours of exercises",
-                    "Free consultation to coaches",
-                    "Access to the FitClub community"
+                    "2 שעות אימון",
+                    "ייעוץ חינם עם מדריכים",
+                    "גישה לקהילת המתאמנים שלנו"
                 ]
             },
             {
-                "name": "PREMIUM PLAN",
+                "name": "תוכנית פרימיום",
                 "price": 25,
                 "features": [
-                    "5 hours of exercises",
-                    "Free consultation to coaches",
-                    "Access to minibar"
+                    "5 שעות אימון",
+                    "ייעוץ חינם עם מתאמנים",
+                    "גישה למיניבר"
                 ]
             },
             {
-                "name": "PRO PLAN",
+                "name": "תוכנית מתקדמים",
                 "price": 35,
                 "features": [
-                    "8 hours of exercises",
-                    "Free consultation to private coaches",
-                    "Free fitness marchandise"
+                    "8 שעות אימון",
+                    "ייעוץ חינם עם מאמנים אישיים",
+                    "מוצרי חיטוב חינם"
                 ]
             }
         ]
@@ -80,16 +80,16 @@
         "route": "/choose-program",
         "title": [
             {
-                "txt": "CHOOSE ",
+                "txt": "בחר ",
                 "ishighlighted": true
             },
             {
-                "txt": "YOUR PROGRAM",
+                "txt": "את התוכנית שלך",
                 "ishighlighted": false
             }
         ],
-        "modalTitle": "Select one exercise from list: ",
-        "subtitle": "For each muscle group, choose a muscle and then select one exercise from results.",
+        "modalTitle": "בחר תרגיל אחד מתוך הרשימה: ",
+        "subtitle": "עבור כל קבוצת שרירים, לחץ על שריר אחד ובחר תרגיל מתוך הרשימה",
         "muscleGroups": [
             {
                 "name": "pull",
@@ -129,16 +129,16 @@
         ],
         "exerciseCard":{
             "p_titles": {
-                "instructions": "instructions",
-                "equipment": "equipment",
-                "difficulty": "difficulty" ,
-                "muscle": "muscle",
-                "type": "type"
+                "instructions": "הוראות",
+                "equipment": "ציוד",
+                "difficulty": "רמת-קושי" ,
+                "muscle": "שריר",
+                "type": "סוג"
             }
         },
         "modalBtns":{
-            "close": "Close",
-            "add": "Add to program"
+            "close": "סגור",
+            "add": "הוספה לתוכנית"
         }
         
     },
@@ -146,29 +146,29 @@
         "route": "/choose-program/workout",
         "title": [
             {
-                "txt": "IT'S ",
+                "txt": "הגיע ",
                 "ishighlighted": false
             },
             {
-                "txt": "GO ",
+                "txt": "הזמן ",
                 "ishighlighted": true
             },
             {
-                "txt": "TIME!",
+                "txt": "לעבוד!",
                 "ishighlighted": false
             }
         ],
         "txts":{
             "p_titles":{
-                "break": "Take a brake, breathe... next exercise",
-                "work": "Exercise",
-                "instructions": "Instructions",
+                "break": "קח הפסקה, תנשום... תרגיל הבא",
+                "work": "תרגיל",
+                "instructions": "הוראות",
                 "completed":{
-                    "title": "Great Job (",
-                    "subtitle": "come back tommorow, persistence is the key!"
+                    "title": "עבודה מעולה (",
+                    "subtitle": "תחזור מחר, עקביות זה המפתח!"
                 }
             },
-            "start": "Workout Starts In"
+            "start": "האימון מתחיל בעוד"
         }
     }
 }

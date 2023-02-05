@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './timer.scss';
+
+
 interface Props {
   startTime: number;
   isBreak?: boolean,
@@ -32,11 +34,11 @@ const Timer: React.FC<Props> = ({ startTime, isBreak, onTimoutHandler }) => {
   }, [seconds]);
 
 
-  return <div className={`
-    ${seconds < 4?'text-danger':'text-secondary'} 
+  return <h3 className={`
+    ${seconds < 4?'text-secondary':'text-primary'} 
       mt-2 mx-auto timer py-3`}>
     {numToTime(seconds)}
-    </div>;
+    </h3>;
 };
 
 export default Timer;

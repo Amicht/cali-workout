@@ -1,66 +1,54 @@
 import React from 'react'
 import { ExerciseModel } from '../../../../models/ExerciseModel'
-import { WorkoutProgramI } from '../../../../models/WorkoutProgramI'
+import ParagraphTitle from '../../choose-program/exercise-card/ParagraphTitle'
 import Timer from '../timer/Timer'
-
+import { LanguageCtst } from '../../../../services/context/LanguageService'
 
 interface Props{
-    exrs: ExerciseModel[]
+    exrs: ExerciseModel[],
+    onTimoutHandler: () => void,
+    isBreak: boolean,
+    breakTime: number,
+    exerciseTime: number,
+    isCompleted: boolean,
+    currentExrc: number
 }
 
 
-const WorkoutSet = (props:Props) => {
+const WorkoutSet: React.FC<Props> = ({exrs, isBreak, breakTime, 
+    exerciseTime, isCompleted, currentExrc,onTimoutHandler }) => {
+
+        const {language} = React.useContext(LanguageCtst);
     
-    const [currentSet,setCurrentSet] = React.useState(0);
-    const [currentExrc,setCurrentExerc] = React.useState(0);
-    const [isBreak,setIsBreak] = React.useState(false);
-    const [isCompleted,setIsCompleted] = React.useState(false);
-
-    const breakTime = 12;
-    const exerciseTime = 15;
-
-    const onTimoutHandler = () => {
-
-        if(isBreak){
-            setNextPhase();
-            return;
-        }
-        else if(currentExrc === props.exrs.length -1){
-            setIsCompleted(true);
-            console.log("workout ended");
-            return;
-        }
-        else { 
-            setIsBreak(!isBreak);
-            return; 
-        }
-    }
-    
-    const setNextPhase = () => {
-        setIsBreak(!isBreak);
-        setCurrentExerc(currentExrc + 1);
-    }
-    
-
   return (
     <div>
-        {isBreak?<h3><Timer 
+        {isBreak?
+        <Timer 
             key={0}
             startTime={breakTime} 
             isBreak={isBreak} 
-            onTimoutHandler={onTimoutHandler}/></h3>:
-        <h3><Timer 
+            onTimoutHandler={onTimoutHandler}/>:
+        <Timer 
             key={1}
             startTime={exerciseTime} 
             isBreak={isBreak} 
-            onTimoutHandler={onTimoutHandler}/></h3>}
-        {isBreak?<h4>Take A Break, next:</h4>:null}
-        <h4>{isBreak && currentExrc < props.exrs.length -1?
-                props.exrs[currentExrc + 1].name:
-                props.exrs[currentExrc].name}</h4>
-        <h4>
-            Description:
-        </h4>
+            onTimoutHandler={onTimoutHandler}/>
+        }
+
+        {!isCompleted?
+        <ParagraphTitle 
+            titleName={isBreak? 
+                language.workout.txts.p_titles.break:
+                language.workout.txts.p_titles.work}
+            content={isBreak && currentExrc < exrs.length -1?
+                exrs[currentExrc + 1].name:
+                exrs[currentExrc].name}
+         />:
+         <ParagraphTitle 
+            titleName={language.workout.txts.p_titles.completed.title}
+            content={language.workout.txts.p_titles.completed.subtitle}
+         />}
+        
     </div>
   )
 }
