@@ -1,10 +1,7 @@
-import React from 'react';
 import { BsCheck2Circle } from "react-icons/bs";
 import CostumBtn from '../../../components/costum-button/CostumBtn';
 import { Link } from 'react-router-dom';
 import './user-plan.scss';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/esm/OverlayTrigger';
 
 interface UserPlanI{
     price: number;
@@ -24,7 +21,7 @@ const UserPlan = (props:UserPlanI) => {
             <ul className='text-start mt-4'>{props.features.map((f,idx) => <li key={idx}><BsCheck2Circle/>  {f}</li>)}</ul>
             <div className='row my-4 mx-1 mt-5'>
               {props.name==="FREE PLAN" ?
-              <Link to={props.goTo}>
+              <Link to={props.goTo} className="px-0">
                 <CostumBtn txt='Join Now' theme="dark" />
               </Link>:
               <>

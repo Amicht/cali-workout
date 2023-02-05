@@ -1,12 +1,16 @@
 import React from 'react'
 import { ExerciseModel } from '../../../../models/ExerciseModel'
-import locales from '../../../../assets/locales/en.json';
 import ParagraphTitle from './ParagraphTitle';
 import DifficultyMeter from './DifficultyMeter';
+import { LanguageCtst } from '../../../../services/context/LanguageService';
 
 const ExerciseCard = (props:{exercise:ExerciseModel}) => {
 
-    const {chooseProgramScreen:{exerciseCard:{p_titles}}} = locales;
+    const {language} = React.useContext(LanguageCtst);
+
+    const {chooseProgramScreen:{exerciseCard:{p_titles}}} = language;
+
+    
   return (
     <div className='exercise-card'>
         <h2 className='fs-1'>{props.exercise.name}</h2>

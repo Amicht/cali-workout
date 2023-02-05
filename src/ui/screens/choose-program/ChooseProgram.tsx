@@ -1,26 +1,25 @@
 import React from 'react'
 import './choose-program.scss';
-import locales from '../../../assets/locales/en.json';
 import MuscleGroupCard from './muscle-group-card/MuscleGroupCard';
 import CostumBtn from '../../components/costum-button/CostumBtn';
 import PageSubtitle from '../../components/titles/PageSubtitle';
 import PageTitle from '../../components/titles/PageTitle';
 import MuscleGroupModal from './muscle-group-modal/MuscleGroupModal';
 import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramService';
-import { ExerciseModel } from '../../../models/ExerciseModel';
-import { getProgramFromStorage } from '../../../services/local-storage/workoutStorage';
 import { useNavigate } from 'react-router-dom';
+import { LanguageCtst } from '../../../services/context/LanguageService';
 
 
 
 
 const ChooseProgram = () => {
+  const {language} = React.useContext(LanguageCtst);
   const workoutProgramCtxt = React.useContext(WorkourProgramCtxt);
   const navigate = useNavigate();
   const [muscleChoice, setMuscleChoice] = React.useState<string>("");
   const [currentMuscleGroupName, setCurrentMuscleGroupName] = React.useState<string | null>(null);
   const [isProgramOK, setIsProgramOK] = React.useState(false);
-  let {states:{userProgram}} = workoutProgramCtxt;
+  let {states:{ userProgram }} = workoutProgramCtxt;
   let {funcs:{
     checkIsProgramOK, 
     onProgramInit, 
@@ -51,7 +50,7 @@ const ChooseProgram = () => {
     else return false
   } 
   const onNextBtnClick = () => {
-    if(isProgramOK){ navigate(locales.workout.route) }
+    if(isProgramOK){ navigate(language.workout.route) }
   }
   
 
@@ -64,10 +63,10 @@ const ChooseProgram = () => {
 
   return (
     <div className='screen py-3 mt-4'> 
-      <PageTitle title={locales.chooseProgramScreen.title} />
-      <PageSubtitle subtitle={locales.chooseProgramScreen.subtitle} />
-      <div className='row '>
-          {locales.chooseProgramScreen.muscleGroups.map((mscGrp, idx) =>
+      <PageTitle title={language.chooseProgramScreen.title} />
+      <PageSubtitle subtitle={language.chooseProgramScreen.subtitle} />
+      <div className='row mb-5'>
+          {language.chooseProgramScreen.muscleGroups.map((mscGrp, idx) =>
             <div className='col-md mt-4' key={idx}>
               <MuscleGroupCard 
                 key={idx} 
@@ -77,8 +76,10 @@ const ChooseProgram = () => {
             </div>)}
           <MuscleGroupModal handleClose={handleClose} show={show} muscleName={muscleChoice} muscleGroupName={currentMuscleGroupName || "pull"}/>
       </div>
-      <div onClick={onNextBtnClick} className='col-md-4 mx-auto mt-3'>
-        <CostumBtn txt='Next' theme='light' disabled={!isProgramOK}/>
+      <div className='bottom-next-btn-bg py-3'>
+        <div onClick={onNextBtnClick} className={`col-md-4 mx-auto bg-dark px-2`}>
+          <CostumBtn txt='Next' theme='light' disabled={!isProgramOK}/>
+        </div>
       </div>
     </div>
   )

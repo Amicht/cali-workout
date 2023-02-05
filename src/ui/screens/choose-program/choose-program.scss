@@ -16,5 +16,15 @@
             border-radius: 0 0 40px 0;
         }
     }
+    
+}
 
+@media only screen and (max-width: 980px) {
+    .bottom-next-btn-bg{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: $dark;
+    }
 }

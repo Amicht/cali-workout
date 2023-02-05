@@ -1,14 +1,13 @@
 import React from 'react'
-import { Button } from 'react-bootstrap';
 import {Modal} from 'react-bootstrap/esm/';
 import './muscle-group-modal.scss';
-import locales from '../../../../assets/locales/en.json';
 import ExerciseCard from '../exercise-card/ExerciseCard';
 import { ExerciseModel } from '../../../../models/ExerciseModel';
 import Form from 'react-bootstrap/Form';
 import { WorkourProgramCtxt } from '../../../../services/context/WorkoutProgramService';
 import CostumBtn from '../../../components/costum-button/CostumBtn';
 import CostumLeftBtn from '../../../components/costum-button/costumeLeftBtn';
+import { LanguageCtst } from '../../../../services/context/LanguageService';
 
 interface Props{
   show:boolean, handleClose:() => void, 
@@ -17,9 +16,10 @@ interface Props{
 }
 
 const MuscleGroupModal = (props:Props) => {
-    
+
+    const {language} = React.useContext(LanguageCtst);
     const workoutCtxt = React.useContext(WorkourProgramCtxt);
-    const screenTxts = locales.chooseProgramScreen;
+    const screenTxts = language.chooseProgramScreen;
     const [exerciseName, setExerciseName] = React.useState<string | null>(null);
     const [exercise, setExercise] = React.useState<ExerciseModel | null>(null);
     const onCloseHandler = () => {
