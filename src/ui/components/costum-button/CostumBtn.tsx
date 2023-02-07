@@ -3,10 +3,11 @@ import './costum-btn.scss'
 interface CostumBtnI{
   txt:string,
   theme: "light" | "dark" | "secondary",
-  disabled?: boolean
+  disabled?: boolean,
+  side?: 'btn-left' | 'btn-right'
 }
 
-const CostumBtn = (props:CostumBtnI) => {
+const CostumBtn = ({txt, side, theme, disabled}:CostumBtnI) => {
 
   const classes = {
     light: "costum-light-btn",
@@ -17,9 +18,9 @@ const CostumBtn = (props:CostumBtnI) => {
 
   return (
     <button className={`costum-btn 
-      ${classes[props.theme]} 
-      ${props.disabled? classes.disabled: ""} py-2`}>
-      {props.disabled?'':props.txt}
+      ${classes[theme]} ${side}
+      ${disabled? classes.disabled: ""} py-2`}>
+      {disabled?'':txt}
     </button>
   )
 }

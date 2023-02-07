@@ -5,7 +5,6 @@ import { ExerciseModel } from '../../../../models/ExerciseModel';
 import Form from 'react-bootstrap/Form';
 import { WorkourProgramCtxt } from '../../../../services/context/WorkoutProgramService';
 import CostumBtn from '../../../components/costum-button/CostumBtn';
-import CostumLeftBtn from '../../../components/costum-button/costumeLeftBtn';
 import { LanguageCtst } from '../../../../services/context/LanguageService';
 import { ProgramMuscleGroups } from '../../../../models/workoutModel';
 
@@ -90,10 +89,15 @@ const MuscleGroupModal: React.FC<Props> = ({
 
           <Modal.Footer>
             <div onClick={onCloseHandler} className='col-md-3'>
-              <CostumLeftBtn theme={'dark'} txt={'close'}/>
+              <CostumBtn 
+                side='btn-left'
+                theme={'dark'} 
+                txt={'close'}/>
             </div>
             <div onClick={onAddExerciseBtnClick} className='col-md-3'>
-              <CostumBtn theme={'light'} txt={screenTxts.modalBtns.add}/>
+              <CostumBtn 
+                theme={'light'} 
+                txt={screenTxts.modalBtns.add}/>
             </div>
           </Modal.Footer>
 

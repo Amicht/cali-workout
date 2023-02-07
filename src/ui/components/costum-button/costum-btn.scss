@@ -2,12 +2,20 @@
 
 .costum-btn{
     border: none;
-    border-radius: 0 0 30px 0;
     font-size: 20px;
     height: fit-content;
     min-height: 60px;
     width: fit-content;
     min-width: 100%;
+    border-radius: 0 0 30px 0;
+    background-color: transparent;
+    
+    &.btn-right{
+        border-radius: 0 0 30px 0;
+    }
+    &.btn-left{
+        border-radius: 0 0 0 30px;
+    }
 
     &.costum-light-btn{
         color: darken($secondary, 20%);

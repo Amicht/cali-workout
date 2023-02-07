@@ -8,7 +8,7 @@ import MuscleGroupModal from './muscle-group-modal/MuscleGroupModal';
 import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramService';
 import { useNavigate } from 'react-router-dom';
 import { LanguageCtst } from '../../../services/context/LanguageService';
-import { ProgramMuscleGroups } from '../../../models/workoutCacheModel';
+import { ProgramMuscleGroups } from '../../../models/workoutModel';
 
 
 
@@ -82,9 +82,15 @@ const ChooseProgram = () => {
             muscleName={muscleChoice} 
             muscleGroupName={currentMuscleGroupName || "pull"}/>
       </div>
-      <div className='bottom-next-btn-bg py-3'>
-        <div onClick={onNextBtnClick} className={`col-md-4 mx-auto bg-dark px-2`}>
-          <CostumBtn txt='Next' theme='light' disabled={!isProgramOK}/>
+      <div className='bottom-next-btn-bg py-3 mt-3'>
+        <div 
+          onClick={onNextBtnClick} 
+          className={`col-md-4 mx-auto bg-transparent px-2`}>
+
+          <CostumBtn 
+            txt={language.chooseProgramScreen.nextScreenBtn} 
+            theme='light' disabled={!isProgramOK}/>
+
         </div>
       </div>
     </div>
