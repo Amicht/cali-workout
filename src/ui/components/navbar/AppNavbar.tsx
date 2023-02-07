@@ -12,7 +12,12 @@ const AppNavbar = () => {
 
 
   return (
-    <Navbar sticky="top" bg="dark" variant="dark" className='app-navbar' expand="lg">
+    <Navbar 
+    className={`app-navbar app-direction-${language.direction}`}
+      sticky="top" 
+      bg="dark" 
+      variant="dark"  
+      expand="md">
       <Container>
         <Navbar.Brand className='me-5'>CALI-APP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -20,8 +25,8 @@ const AppNavbar = () => {
           <Nav className="me-auto my-2">
             <Link className='link me-3 mt-1' to="/">{language.navbar.home}</Link>
             <Link className='link me-3 mt-1' to="/get-started">{language.navbar.get_started}</Link>
+            <ChangeLanguageComponent />
           </Nav>
-          <ChangeLanguageComponent />
         </Navbar.Collapse>
       </Container>
     </Navbar>
