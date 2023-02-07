@@ -4,7 +4,7 @@ import en from '../../assets/locales/en.json';
 import he from '../../assets/locales/he.json';
 
 
-interface LanCtxt{
+export interface LanCtxt{
     language:LanguageModel, 
     getLangOpts?: () =>  LangOpt[],
     changeLangHandler?: (langName: string) => void

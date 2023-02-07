@@ -39,6 +39,7 @@ export interface PlansScreen {
     title: Title2[];
     subtitle: string;
     plans: Plan[];
+    joinBtn: string;
 }
 
 export interface Title3 {
@@ -71,6 +72,7 @@ export interface ModalBtns {
 export interface ChooseProgramScreen {
     route: string;
     title: Title3[];
+    nextScreenBtn: string,
     modalTitle: string;
     subtitle: string;
     muscleGroups: MuscleGroup[];

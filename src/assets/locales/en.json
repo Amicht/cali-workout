@@ -45,6 +45,7 @@
                 "ishighlighted": true
             }
         ],
+        "joinBtn": "Join Now",
         "subtitle": "Start your journey with us to get a balance and healthy body. You can choose the free plan and start right away.",
         "plans": [
             {
@@ -90,6 +91,7 @@
         ],
         "modalTitle": "Select one exercise from list: ",
         "subtitle": "For each muscle group, choose a muscle and then select one exercise from results.",
+        "nextScreenBtn": "Start Workout",
         "muscleGroups": [
             {
                 "name": "pull",
