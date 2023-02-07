@@ -21,7 +21,7 @@ const getQueryString = (apiCallParams:ApiQueryParamsI) => {
 
 const getExercises = async (apiCallParams:ApiQueryParamsI) => {
     
-    /*
+    
     const queryString = getQueryString(apiCallParams);
     
     const excercises:ExerciseModel[] = await axios
@@ -33,11 +33,11 @@ const getExercises = async (apiCallParams:ApiQueryParamsI) => {
     .then(res => res!.data);
 
     return excercises;
-    */
+    
     
 
     // while testing:
-    return testData;
+    // return testData;
 }
 
 

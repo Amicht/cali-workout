@@ -8,6 +8,7 @@ import MuscleGroupModal from './muscle-group-modal/MuscleGroupModal';
 import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramService';
 import { useNavigate } from 'react-router-dom';
 import { LanguageCtst } from '../../../services/context/LanguageService';
+import { ProgramMuscleGroups } from '../../../models/workoutCacheModel';
 
 
 
@@ -17,36 +18,36 @@ const ChooseProgram = () => {
   const workoutProgramCtxt = React.useContext(WorkourProgramCtxt);
   const navigate = useNavigate();
   const [muscleChoice, setMuscleChoice] = React.useState<string>("");
-  const [currentMuscleGroupName, setCurrentMuscleGroupName] = React.useState<string | null>(null);
+  const [currentMuscleGroupName, setCurrentMuscleGroupName] = React.useState<keyof ProgramMuscleGroups | string>("pull");
   const [isProgramOK, setIsProgramOK] = React.useState(false);
-  let {states:{ userProgram }} = workoutProgramCtxt;
-  let {funcs:{
-    checkIsProgramOK, 
-    onProgramInit, 
-    getMuscleExercises }} = workoutProgramCtxt;
+  let {funcs, states} = workoutProgramCtxt;
   
   const [show, setShow] = React.useState(false);
   
   const handleClose = () => {
-    setIsProgramOK(checkIsProgramOK());
+    setIsProgramOK(funcs!.checkIsProgramOK());
     setShow(false);
   }
   
-  const onMuscleClick = (muscle:string, muscleGrpName:string) => {
+  const onMuscleClick = (muscle:string, 
+    muscleGrpName:string) => {
+    funcs!.loadingHandler(true);    
+    funcs!.getMuscleExercises({muscle})
 
-    getMuscleExercises({muscle})
     .then(() => {
       setMuscleChoice(muscle);
       setCurrentMuscleGroupName(muscleGrpName);
     })
     .then(() => {
+      funcs!.loadingHandler(false);
       setShow(true);
     })
   }
 
   const isMslGrpChosen = (mscGrp:string) => {
     
-    if(!!userProgram) return Object.entries(userProgram).filter(msclGrp => (msclGrp[0] === mscGrp) && (msclGrp[1]  !== null)).length > 0;
+    if(!!states!.userProgram) return Object.entries(states!.userProgram)
+      .filter(msclGrp => (msclGrp[0] === mscGrp) && (msclGrp[1]  !== null)).length > 0;
     else return false
   } 
   const onNextBtnClick = () => {
@@ -56,8 +57,8 @@ const ChooseProgram = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    onProgramInit();
-    setIsProgramOK(checkIsProgramOK());
+    funcs!.onProgramInit();
+    setIsProgramOK(funcs!.checkIsProgramOK());
   },[]);
 
 
@@ -71,10 +72,15 @@ const ChooseProgram = () => {
               <MuscleGroupCard 
                 key={idx} 
                 isChosen={isMslGrpChosen(mscGrp.name)} 
-                {...mscGrp} 
+                muscles={mscGrp.muscles}
+                name={mscGrp.name}
                 onMuscleClick={onMuscleClick}/>
             </div>)}
-          <MuscleGroupModal handleClose={handleClose} show={show} muscleName={muscleChoice} muscleGroupName={currentMuscleGroupName || "pull"}/>
+          <MuscleGroupModal 
+            handleClose={handleClose} 
+            show={show} 
+            muscleName={muscleChoice} 
+            muscleGroupName={currentMuscleGroupName || "pull"}/>
       </div>
       <div className='bottom-next-btn-bg py-3'>
         <div onClick={onNextBtnClick} className={`col-md-4 mx-auto bg-dark px-2`}>

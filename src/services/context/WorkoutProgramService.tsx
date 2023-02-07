@@ -4,8 +4,11 @@ import { ExerciseModel } from '../../models/ExerciseModel';
 import { getProgramFromStorage, setProgramToStorage  } from '../local-storage/workoutStorage';
 import { getExercises } from '../workoutApi/apiService';
 import { ApiQueryParamsI } from '../../models/ApiQueryParamsI';
+import { WorkourProgramCtxtI } from '../../models/WorkourProgramCtxtI';
 
-export const WorkourProgramCtxt = React.createContext<any>({});
+
+
+export const WorkourProgramCtxt = React.createContext<WorkourProgramCtxtI>({});
 
 
 const initialProgramValue : WorkoutCacheModel = {
@@ -33,12 +36,17 @@ const WorkourProgramService = (props:{children?:ReactNode}) => {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
 
-    const updateUserExerciseToProgram = async (msclGrpName:keyof ProgramMuscleGroups , exerciseName:string) => {
+    const updateUserExerciseToProgram = async (msclGrpName:string , exerciseName:string) => {
         let newExercise = exercises.find(ex => ex.name === exerciseName) || null;
         const updatedProgram = {...userProgram};
-        updatedProgram.mslGrp[msclGrpName].exercise = newExercise;
-        setUserProgram(updatedProgram);
-        setProgramToStorage(updatedProgram);
+        
+        // @ts-ignore: Unreachable code error
+        if( !!updatedProgram.mslGrp[msclGrpName] ){
+            // @ts-ignore: Unreachable code error
+            updatedProgram.mslGrp[msclGrpName].exercise = newExercise;
+            setUserProgram(updatedProgram);
+            setProgramToStorage(updatedProgram);
+        }
     }
 
     const getMuscleExercises = async(apiCallParams: ApiQueryParamsI) => {
@@ -63,6 +71,8 @@ const WorkourProgramService = (props:{children?:ReactNode}) => {
         return false;
     }
 
+    const loadingHandler = (isLoadingNow:boolean) => setIsLoading(isLoadingNow);
+
     const getUserProgram = () => {
         const program = getProgramFromStorage();
         if(!program) return null
@@ -80,7 +90,8 @@ const WorkourProgramService = (props:{children?:ReactNode}) => {
         checkIsProgramOK,
         getMuscleExercises,
         onProgramInit,
-        getUserProgram
+        getUserProgram,
+        loadingHandler
     }
 
 

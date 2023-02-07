@@ -2,6 +2,7 @@ import React from 'react'
 import './muscle-group-card.scss'
 import {GiLeg, GiAbdominalArmor, GiChestArmor, GiBiceps } from 'react-icons/gi'
 import Badge from 'react-bootstrap/Badge';
+import { ProgramMuscleGroups } from '../../../../models/workoutCacheModel';
 
 const icons = {
   "GiLeg": <GiLeg />,
@@ -11,10 +12,10 @@ const icons = {
 }
 
 interface Props{
-  name: string,
+  name: keyof ProgramMuscleGroups | string,
   muscles: string[], 
   isChosen: boolean,
-  onMuscleClick:(muscle:string, mslGrpName:string)=>void,
+  onMuscleClick:(muscle:string, mslGrpName:keyof ProgramMuscleGroups | string)=>void,
 }
 
 
@@ -34,7 +35,10 @@ const MuscleGroupCard = (props:Props) => {
           {props.name==="pull"?<div>{icons.GiBiceps}</div>:null}
         </div>
         <ul>{muscles.map((msl, idx) => 
-            <li className='muscle-type text-start mx-5' key={idx} onClick={() => props.onMuscleClick(msl, name)}>
+            <li 
+              className='muscle-type text-start mx-5' 
+              key={idx} 
+              onClick={() => props.onMuscleClick(msl, name)}>
                 {msl}
             </li>)}
           </ul>

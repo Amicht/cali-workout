@@ -115,4 +115,3 @@ export interface LanguageModel {
     chooseProgramScreen: ChooseProgramScreen;
     workout: Workout;
 }
-

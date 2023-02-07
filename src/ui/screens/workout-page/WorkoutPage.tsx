@@ -10,7 +10,7 @@ import { LanguageCtst } from '../../../services/context/LanguageService';
 
 const WorkoutPage = () => {
     const {language} = React.useContext(LanguageCtst);
-    const {funcs: {getUserProgram}} = React.useContext(WorkourProgramCtxt);
+    const {funcs} = React.useContext(WorkourProgramCtxt);
     const [program, setProgram] = React.useState<ExerciseModel[]>([]);
     const [isWorkoutStarted, setIsWorkoutStarted] = React.useState(false);
     const [currentExrc,setCurrentExerc] = React.useState(0);
@@ -69,7 +69,7 @@ const WorkoutPage = () => {
     
     
     React.useEffect(() => {
-        const userProgram:WorkoutCacheModel | null = getUserProgram();
+        const userProgram:WorkoutCacheModel | null = funcs!.getUserProgram();
         if(!!userProgram){
             setProgram(Object.values(userProgram.mslGrp).map(ex => ex.exercise));
         } 

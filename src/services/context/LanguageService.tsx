@@ -4,13 +4,14 @@ import en from '../../assets/locales/en.json';
 import he from '../../assets/locales/he.json';
 
 
-export const LanguageCtst = React.createContext<LanCtxt>({language:en});
-
 interface LanCtxt{
     language:LanguageModel, 
     getLangOpts?: () =>  LangOpt[],
     changeLangHandler?: (langName: string) => void
 }
+
+export const LanguageCtst = React.createContext<LanCtxt>({language:en});
+
 
 interface Props{
     children:ReactNode
