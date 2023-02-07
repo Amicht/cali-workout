@@ -1,11 +1,13 @@
 import React from 'react'
-import { WorkoutCacheModel } from '../../../models/workoutCacheModel';
+import { WorkoutModel } from '../../../models/workoutModel';
 import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramService';
 import PageTitle from '../../components/titles/PageTitle';
 import WorkoutSet from './workout-set/WorkoutSet';
 import { ExerciseModel } from '../../../models/ExerciseModel';
 import { PreWorkout } from './pre-workout/PreWorkout';
 import { LanguageCtst } from '../../../services/context/LanguageService';
+import { workoutSettings } from '../../../services/context/vars';
+import WorkoutInfo from './workoutInfo/WorkoutInfo';
 
 
 const WorkoutPage = () => {
@@ -18,15 +20,6 @@ const WorkoutPage = () => {
     const [isWorkoutCompleted,setIsWorkoutCompleted] = React.useState(false);
     const [currentSet,setCurrentSet] = React.useState(1);
     
-    const settings = {
-        breakTime: {
-            exrc: 3,
-            sets: 6
-        },
-        exerciseTime: 6,
-        startInCounter: 5,
-        totalSets: 3
-    }
 
 
     const setNextPhase = () => {
@@ -35,7 +28,7 @@ const WorkoutPage = () => {
     }
 
     const onSetEndHandler = () => {
-        if(currentSet === settings.totalSets){
+        if(currentSet === workoutSettings.totalSets){
             setIsWorkoutCompleted(true);
             return;
         }
@@ -69,7 +62,7 @@ const WorkoutPage = () => {
     
     
     React.useEffect(() => {
-        const userProgram:WorkoutCacheModel | null = funcs!.getUserProgram();
+        const userProgram:WorkoutModel | null = funcs!.getUserProgram();
         if(!!userProgram){
             setProgram(Object.values(userProgram.mslGrp).map(ex => ex.exercise));
         } 
@@ -78,7 +71,9 @@ const WorkoutPage = () => {
     
     
   return (
-    <div className='screen text-primary mt-5'>
+    <div 
+        style={{direction:`${language.direction === 'rtl'? 'rtl': 'ltr'}`}}
+    className='screen text-primary mt-5'>
 
         <PageTitle title={language.workout.title}/>
         
@@ -86,24 +81,40 @@ const WorkoutPage = () => {
         <>
 
             {isWorkoutStarted?
-            <WorkoutSet 
-                breakTime={settings.breakTime.exrc}
-                currentExrc={currentExrc}
-                exerciseTime={settings.exerciseTime}
-                isBreak={isBreak}
-                isCompleted={isWorkoutCompleted}
-                onTimoutHandler={onTimoutHandler}
-                exrs={program}
-            />
+            <>
+                <WorkoutSet 
+                    breakTime={workoutSettings.breakTime.btwnExrc}
+                    currentExrc={currentExrc}
+                    exerciseTime={workoutSettings.exerciseTime}
+                    isBreak={isBreak}
+                    isCompleted={isWorkoutCompleted}
+                    onTimoutHandler={onTimoutHandler}
+                    exrs={program}
+                />
+                <div className='col-md-6 mx-auto mt-5'>
+                    <WorkoutInfo 
+                        isBreak={isBreak}
+                        isWorkoutCompleted={isWorkoutCompleted}
+                        currentExercise={currentExrc +1}
+                        currentSet={currentSet}
+                        difficulty={program[currentExrc].difficulty}
+                        language={language}
+                    />
+                </div>
+            </>
             :<PreWorkout 
                 title={language.workout.txts.start}
                 content={""}
                 firstExerciseName={program[0].name}
-                startInCounter={settings.startInCounter} 
+                startInCounter={workoutSettings.startInCounter} 
                 onTimeoutHandler={onTimoutHandler}
             />}
 
+
+
         </> :null}
+
+
     </div>
   )
 }

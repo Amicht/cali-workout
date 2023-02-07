@@ -170,7 +170,13 @@
                     "subtitle": "come back tommorow, persistence is the key!"
                 }
             },
-            "start": "Workout Starts In"
+            "start": "Workout Starts In",
+            "info":{
+                "muscle": "muscle",
+                "difficulty":"difficulty",
+                "set": "current set",
+                "exercise":"current exercise"
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import './muscle-group-card.scss'
 import {GiLeg, GiAbdominalArmor, GiChestArmor, GiBiceps } from 'react-icons/gi'
 import Badge from 'react-bootstrap/Badge';
-import { ProgramMuscleGroups } from '../../../../models/workoutCacheModel';
+import { ProgramMuscleGroups } from '../../../../models/workoutModel';
 
 const icons = {
   "GiLeg": <GiLeg />,

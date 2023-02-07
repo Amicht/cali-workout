@@ -7,7 +7,7 @@ import { WorkourProgramCtxt } from '../../../../services/context/WorkoutProgramS
 import CostumBtn from '../../../components/costum-button/CostumBtn';
 import CostumLeftBtn from '../../../components/costum-button/costumeLeftBtn';
 import { LanguageCtst } from '../../../../services/context/LanguageService';
-import { ProgramMuscleGroups } from '../../../../models/workoutCacheModel';
+import { ProgramMuscleGroups } from '../../../../models/workoutModel';
 
 interface Props{
   show:boolean, 

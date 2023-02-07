@@ -15,10 +15,20 @@ const ExerciseCard = (props:{exercise:ExerciseModel}) => {
     <div className='exercise-card'>
         <h2 className='fs-1'>{props.exercise.name}</h2>
         <div>
-            <ParagraphTitle titleName={p_titles.type} content={props.exercise.type} />
-            <ParagraphTitle titleName={p_titles.equipment} content={props.exercise.equipment} />
-            <DifficultyMeter difficulty={props.exercise.difficulty} title={p_titles.difficulty}/>
-            <ParagraphTitle titleName={p_titles.instructions} content={props.exercise.instructions} />
+            <ParagraphTitle 
+              titleName={p_titles.type} 
+              content={props.exercise.type} />
+            <ParagraphTitle 
+              titleName={p_titles.equipment} 
+              content={props.exercise.equipment} />
+            <DifficultyMeter 
+              size='col-md-4'
+              difficulty={props.exercise.difficulty} 
+              difficultyTitle={props.exercise.difficulty}
+              title={p_titles.difficulty}/>
+            <ParagraphTitle 
+              titleName={p_titles.instructions} 
+              content={props.exercise.instructions} />
         </div>
     </div>
   )

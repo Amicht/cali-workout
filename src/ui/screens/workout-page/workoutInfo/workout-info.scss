@@ -1,0 +1,15 @@
+@import '../../../../styles/colors';
+
+.workout-info{
+
+    
+    .content{
+        color: $light;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .subtitle{
+        color: lighten($success, 20%);
+        font-size: 15px;
+    }
+}
