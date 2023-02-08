@@ -6,7 +6,7 @@ import WorkoutSet from './workout-set/WorkoutSet';
 import { ExerciseModel } from '../../../models/ExerciseModel';
 import { PreWorkout } from './pre-workout/PreWorkout';
 import { LanguageCtst } from '../../../services/context/LanguageService';
-import { workoutSettings } from '../../../services/context/vars';
+import { workoutSettings } from '../../../services/context/workoutSettings';
 import WorkoutInfo from './workoutInfo/WorkoutInfo';
 
 
@@ -23,8 +23,9 @@ const WorkoutPage = () => {
 
 
     const setNextPhase = () => {
+        if(currentExrc === 3) setCurrentExerc(0);
+        else setCurrentExerc(currentExrc + 1);
         setIsBreak(!isBreak);
-        setCurrentExerc(currentExrc + 1);
     }
 
     const onSetEndHandler = () => {
@@ -34,7 +35,6 @@ const WorkoutPage = () => {
         }
         else{
             setCurrentSet(currentSet + 1);
-            setCurrentExerc(0);
             setIsBreak(!isBreak);
             return;
         }
@@ -51,7 +51,7 @@ const WorkoutPage = () => {
             setNextPhase();
             return;
         }
-        else if(currentExrc === program.length -1){
+        else if(currentExrc === program.length - 1){
             onSetEndHandler();
             return
         }
