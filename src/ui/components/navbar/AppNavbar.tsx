@@ -3,7 +3,7 @@ import './app-navbar.scss'
 import Container from 'react-bootstrap/Container';
 import {Navbar, Nav} from 'react-bootstrap/';
 import { Link } from 'react-router-dom';
-import ChangeLanguageComponent from '../change-language/ChangeLanguage';
+import ChangeLanguageComponent from './change-language/ChangeLanguage';
 import { LanguageCtst } from '../../../services/context/LanguageService';
 
 
@@ -13,7 +13,7 @@ const AppNavbar = () => {
 
   return (
     <Navbar 
-    className={`app-navbar app-direction-${language.direction}`}
+    className={`app-navbar`}
       sticky="top" 
       bg="dark" 
       variant="dark"  
