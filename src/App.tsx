@@ -9,6 +9,7 @@ import { LanguageCtst } from './services/context/LanguageService';
 import React from 'react';
 import LoadingComponent from './ui/components/loading/LoadingComponent';
 import About from './ui/screens/about/About';
+import Error404Page from './ui/screens/error-404/Error404Page';
 
 
 
@@ -27,7 +28,7 @@ function App() {
           <Route path={language.chooseProgramScreen.route} element={ <ChooseProgram/> } />
           <Route path={language.workout.route} element={ <WorkoutPage /> } />
           <Route path="about" element={ <About /> } />
-          <Route path="contact" element={ "" } />
+          <Route path="*" element={<Error404Page /> } />
         </Routes>
         {!!states && states.isLoading? <LoadingComponent />:null}
       </div>

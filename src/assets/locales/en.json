@@ -31,7 +31,7 @@
     },
     "plansScreen":{
         "route": "/get-started",
-        "unavailable": "unavailable",
+        "unavailable": "Coming Soon",
         "title": [
             {
                 "txt": "READY TO START ",
@@ -182,5 +182,19 @@
                 "exercise":"current exercise"
             }
         }
+    },
+    "errorPage":{
+        "title": [
+            {
+                "txt": "ERROR ",
+                "ishighlighted": false
+            },
+            {
+                "txt": "404",
+                "ishighlighted": true
+            }
+        ],
+        "subtitle": "This Page is not available. stop doing things you are not suppose to be doing and start workout",
+        "btnTxt": "Home page"
     }
 }

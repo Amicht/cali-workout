@@ -31,7 +31,7 @@
     },
     "plansScreen":{
         "route": "/get-started",
-        "unavailable": "לא זמין",
+        "unavailable": "בקרוב",
         "title": [
             {
                 "txt": "מוכן להתחיל את ",
@@ -182,5 +182,19 @@
                 "exercise":"תרגיל נוכחי"
             }
         }
+    },
+    "errorPage":{
+        "title": [
+            {
+                "txt": "שגיאה ",
+                "ishighlighted": false
+            },
+            {
+                "txt": "404",
+                "ishighlighted": true
+            }
+        ],
+        "subtitle": "דף זה איננו זמין. תפסיק לעשות דברים שאתה לא אמור לעשות ותתחיל להתאמן",
+        "btnTxt": "דף הבית"
     }
 }

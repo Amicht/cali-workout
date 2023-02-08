@@ -116,6 +116,17 @@ export interface Workout {
     txts: Txts;
 }
 
+export interface Title {
+    txt: string;
+    ishighlighted: boolean;
+}
+
+export interface ErrorPage {
+    title: Title[];
+    subtitle: string;
+    btnTxt: string;
+}
+
 export interface LanguageModel {
     language: string;
     direction: string;
@@ -124,4 +135,5 @@ export interface LanguageModel {
     plansScreen: PlansScreen;
     chooseProgramScreen: ChooseProgramScreen;
     workout: Workout;
+    errorPage:ErrorPage;
 }
