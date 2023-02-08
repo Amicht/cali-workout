@@ -97,7 +97,7 @@ const MuscleGroupModal: React.FC<Props> = ({
               <CostumBtn 
                 side='btn-left'
                 theme={'dark'} 
-                txt={'close'}/>
+                txt={screenTxts.modalBtns.close}/>
             </div>
             <div onClick={onAddExerciseBtnClick} className='col-md-3'>
               <CostumBtn 
