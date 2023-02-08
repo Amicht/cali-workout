@@ -27,10 +27,12 @@ const Home = () => {
           </Link>
         </div>
         <div className='col-sm-3 mt-2'>
+          <Link to='/about'>
             <CostumBtn 
               side='btn-right'
               txt={language.homeScreen.actionBtns[1]} 
               theme="dark" />
+          </Link>
         </div>
       </div>
     </div>

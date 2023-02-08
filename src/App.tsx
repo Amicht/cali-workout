@@ -8,6 +8,7 @@ import WorkoutPage from './ui/screens/workout-page/WorkoutPage';
 import { LanguageCtst } from './services/context/LanguageService';
 import React from 'react';
 import LoadingComponent from './ui/components/loading/LoadingComponent';
+import About from './ui/screens/about/About';
 
 
 
@@ -25,7 +26,7 @@ function App() {
           <Route path={language.plansScreen.route} element={ <GetStarted/> } />
           <Route path={language.chooseProgramScreen.route} element={ <ChooseProgram/> } />
           <Route path={language.workout.route} element={ <WorkoutPage /> } />
-          <Route path="about" element={ "" } />
+          <Route path="about" element={ <About /> } />
           <Route path="contact" element={ "" } />
         </Routes>
         {!!states && states.isLoading? <LoadingComponent />:null}
