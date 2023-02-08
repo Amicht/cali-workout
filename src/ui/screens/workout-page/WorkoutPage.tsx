@@ -8,11 +8,13 @@ import { PreWorkout } from './pre-workout/PreWorkout';
 import { LanguageCtst } from '../../../services/context/LanguageService';
 import { workoutSettings } from '../../../services/context/workoutSettings';
 import WorkoutInfo from './workoutInfo/WorkoutInfo';
+import { useNavigate } from 'react-router-dom';
 
 
 const WorkoutPage = () => {
     const {language} = React.useContext(LanguageCtst);
     const {funcs} = React.useContext(WorkourProgramCtxt);
+    const navigate = useNavigate();
     const [program, setProgram] = React.useState<ExerciseModel[]>([]);
     const [isWorkoutStarted, setIsWorkoutStarted] = React.useState(false);
     const [currentExrc,setCurrentExerc] = React.useState(0);
@@ -62,9 +64,10 @@ const WorkoutPage = () => {
     
     React.useEffect(() => {
         const userProgram:WorkoutModel | null = funcs!.getUserProgram();
-        if(!!userProgram){
+        if(funcs?.checkIsProgramOK() && !!userProgram){
             setProgram(Object.values(userProgram.mslGrp).map(ex => ex.exercise));
         } 
+        else navigate('/');
     },[]);
 
     
