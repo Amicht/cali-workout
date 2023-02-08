@@ -53,7 +53,7 @@ const MuscleGroupModal: React.FC<Props> = ({
 
     return (
       <>
-        <Modal className='costum-model text-secondary muscle-modal'
+        <Modal className='costum-model  text-secondary muscle-modal'
           show={show}
           onHide={onCloseHandler}
           backdrop="static"
@@ -63,12 +63,17 @@ const MuscleGroupModal: React.FC<Props> = ({
         >
           <Modal.Header closeButton className='text-secondary'>
             
-            <Modal.Title className='row col-md-10'>
-                <span className='col-sm-5'>{screenTxts.modalTitle} </span>
+            <Modal.Title 
+              style={{direction: language.direction === 'rtl'?'rtl':'ltr'}}
+              className='row col-md-10 mx-auto'>
+                <span 
+                  style={{direction: language.direction === 'rtl'?'rtl':'ltr'}}
+                  className='col-sm-5'>{screenTxts.modalTitle} 
+                </span>
                 
                 {(states!.exercises.length > 0)?
                 <Form.Select 
-                  className='col-sm' 
+                  className='col-sm bg-dark text-center text-primary border-secondary' 
                   onChange={(e) => onExerciseChange(e.currentTarget.value)}>
 
                 {states!.exercises.map((exrcs:ExerciseModel,idx:number) => 
