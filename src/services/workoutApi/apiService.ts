@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { ExerciseModel } from "../../models/ExerciseModel";
-import testData from '../../data/data.json';
 import { ApiQueryParamsI } from '../../models/ApiQueryParamsI';
 
 
@@ -33,11 +32,7 @@ const getExercises = async (apiCallParams:ApiQueryParamsI) => {
     .then(res => res!.data);
 
     return excercises;
-    
-    
 
-    // while testing:
-    // return testData;
 }
 
 

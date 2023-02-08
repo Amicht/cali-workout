@@ -6,10 +6,11 @@ interface TitlePartI{
     txt:string
 }
 
-const PageTitle = (props:{title:TitlePartI[]}) => {
+const PageTitle = (props:{title:TitlePartI[], direction?:string}) => {
     const {title} = props;
     return (
-        <h1 className='my-3 title'>
+        <h1 style={{direction: props.direction === 'rtl'? 'rtl':'ltr'}} 
+            className='my-3 title'>
             {title.map((titlePart, idx) => 
             <span key={idx}>
                 {titlePart.ishighlighted? <HighlightedWords {...titlePart}/>: titlePart.txt} 

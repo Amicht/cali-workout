@@ -1,37 +1,27 @@
 import React, { ReactNode } from 'react';
-import { ProgramMuscleGroups, WorkoutCacheModel } from '../../models/workoutCacheModel';
+import {  WorkoutModel } from '../../models/workoutModel';
 import { ExerciseModel } from '../../models/ExerciseModel';
 import { getProgramFromStorage, setProgramToStorage  } from '../local-storage/workoutStorage';
 import { getExercises } from '../workoutApi/apiService';
 import { ApiQueryParamsI } from '../../models/ApiQueryParamsI';
 import { WorkourProgramCtxtI } from '../../models/WorkourProgramCtxtI';
+import { initialProgramValue } from './workoutSettings';
 
 
 
 export const WorkourProgramCtxt = React.createContext<WorkourProgramCtxtI>({});
 
 
-const initialProgramValue : WorkoutCacheModel = {
-    mslGrp:{
-        push: {exercise: null},
-        pull: {exercise: null},
-        core: {exercise: null},
-        squat: {exercise: null},
-    },
-    sets:{
-        target:5,
-        current: 0,
-        break:{
-            sets:90,
-            exrcs: 20
-        }
-    }
+interface ExercisesCacheI{
+    [k:string]: ExerciseModel[]
 }
+
+const exercisesCache:ExercisesCacheI = {};
 
 
 const WorkourProgramService = (props:{children?:ReactNode}) => {
 
-    const [userProgram,setUserProgram] = React.useState<WorkoutCacheModel>(initialProgramValue);
+    const [userProgram,setUserProgram] = React.useState<WorkoutModel>(initialProgramValue);
     const [exercises,setExercises] = React.useState<ExerciseModel[]>([]);
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -50,8 +40,15 @@ const WorkourProgramService = (props:{children?:ReactNode}) => {
     }
 
     const getMuscleExercises = async(apiCallParams: ApiQueryParamsI) => {
-        const exs = await getExercises(apiCallParams);
-        setExercises(exs);
+
+        if(!!exercisesCache[apiCallParams.muscle]){
+            setExercises(exercisesCache[apiCallParams.muscle])
+        }
+        else{
+            const exs = await getExercises(apiCallParams);
+            setExercises(exs);
+            exercisesCache[apiCallParams.muscle] = exs;
+        }
     } 
 
     const onProgramInit = () => {
@@ -64,7 +61,7 @@ const WorkourProgramService = (props:{children?:ReactNode}) => {
     }
 
     const checkIsProgramOK = ():boolean => {
-        const program:WorkoutCacheModel | null = getProgramFromStorage();
+        const program:WorkoutModel | null = getProgramFromStorage();
         if(!!program){
             return (Object.values(program.mslGrp).filter(msclGrp => !msclGrp.exercise).length) === 0;
         }

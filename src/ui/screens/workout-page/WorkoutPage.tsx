@@ -53,11 +53,10 @@ const WorkoutPage = () => {
         }
         else if(currentExrc === program.length - 1){
             onSetEndHandler();
-            return
+            return;
         }
 
         setIsBreak(!isBreak);
-        return; 
     }
     
     
@@ -73,9 +72,10 @@ const WorkoutPage = () => {
   return (
     <div 
         style={{direction:`${language.direction === 'rtl'? 'rtl': 'ltr'}`}}
-    className='screen text-primary mt-5'>
+        className='screen text-primary mt-5'>
 
-        <PageTitle title={language.workout.title}/>
+        <PageTitle title={language.workout.title}
+            direction={language.direction}/>
         
         {(program.length > 0)?
         <>

@@ -8,17 +8,19 @@ interface Props {
   onTimoutHandler: () => void;
 }
 
-const Timer: React.FC<Props> = ({ startTime, isBreak, onTimoutHandler }) => {
-  const [seconds, setSeconds] = useState(startTime);
-
-  const numToTime = (seconds:number) => {
+function numToTime(seconds:number){
     let mins = 0;
     if(seconds >= 60 ) {
       mins = Math.floor(seconds / 60);
     }
     const secs = seconds - (mins * 60);
     return `${mins}:${secs<10?'0':''}${secs}`
-  }
+}
+
+
+const Timer: React.FC<Props> = ({ startTime, isBreak, onTimoutHandler }) => {
+  const [seconds, setSeconds] = useState(startTime);
+
 
   useEffect(() => {
     const timer = setInterval(() => {

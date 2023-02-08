@@ -23,7 +23,7 @@
                 "ishighlighted": true
             }
         ],
-        "subtitle": "Let us help you to create your own full-body workout program, costumized to your abillities and strength",
+        "subtitle": "Let us help you to create your own body-weight workout program, costumized to your abillities and strength",
         "actionBtns": [
             "Get Started", 
             "Learn More"
@@ -31,6 +31,7 @@
     },
     "plansScreen":{
         "route": "/get-started",
+        "unavailable": "unavailable",
         "title": [
             {
                 "txt": "READY TO START ",
@@ -52,10 +53,11 @@
                 "name": "FREE PLAN",
                 "price": 0,
                 "features": [
-                    "2 hours of exercises",
+                    "No registration required",
                     "Free consultation to coaches",
                     "Access to the FitClub community"
-                ]
+                ],
+                "isAvailable":true
             },
             {
                 "name": "PREMIUM PLAN",
@@ -64,7 +66,8 @@
                     "5 hours of exercises",
                     "Free consultation to coaches",
                     "Access to minibar"
-                ]
+                ],
+                "isAvailable":false
             },
             {
                 "name": "PRO PLAN",
@@ -73,7 +76,8 @@
                     "8 hours of exercises",
                     "Free consultation to private coaches",
                     "Free fitness marchandise"
-                ]
+                ],
+                "isAvailable":false
             }
         ]
     },
@@ -90,7 +94,7 @@
             }
         ],
         "modalTitle": "Select one exercise from list: ",
-        "subtitle": "For each muscle group, choose a muscle and then select one exercise from results.",
+        "subtitle": "For each muscle group, choose one exercise from the list, by clicking on a muscle you would like to work on.",
         "nextScreenBtn": "Start Workout",
         "muscleGroups": [
             {

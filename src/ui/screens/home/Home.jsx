@@ -12,8 +12,10 @@ const Home = () => {
 
   return (
     <div className='py-3 mt-4 screen'>
-      <PageTitle title={language.homeScreen.title} />
-      <PageSubtitle subtitle={language.homeScreen.subtitle} />
+      <PageTitle title={language.homeScreen.title}
+        direction={language.direction} />
+      <PageSubtitle subtitle={language.homeScreen.subtitle}
+      direction={language.direction}  />
       <div 
         className='d-flex justify-content-evenly my-4 px-auto align-items-center mt-5'>
         <div className='col-sm-3 mt-2'>

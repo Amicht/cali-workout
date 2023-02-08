@@ -6,22 +6,28 @@ import UserPlan from './user-plan/UserPlan';
 
 
 const GetStarted = () => {
-  const {language} = React.useContext(LanguageCtst);
-
-  const getRelatedRoute = (planName:string) => {
-    if(planName === 'FREE PLAN') return "/choose-program"
-    else return "";
-  }
-
+  const {language: {
+    direction,
+    plansScreen, 
+    chooseProgramScreen}} = React.useContext(LanguageCtst);
 
   return (
     <div className='screen py-3 mt-4'>
-      <PageTitle title={language.plansScreen.title} />
-      <PageSubtitle subtitle={language.plansScreen.subtitle} />
+      <PageTitle title={plansScreen.title} />
+      <div style={{direction: direction === 'rtl'? 'rtl':'ltr'}}>
+        <PageSubtitle subtitle={plansScreen.subtitle} 
+        direction={direction}/>
+      </div>
       <div className='row'>
-          {language.plansScreen.plans.map((p, idx) => 
-            <div className='col-md-4 mt-4' key={idx}>
-              <UserPlan goTo={getRelatedRoute(p.name)} {...p}/>
+          {plansScreen.plans.map((p, idx) => 
+            <div className='col-md-4 mt-4' key={'user-plan-'+ idx}>
+              <UserPlan
+                unavailable={plansScreen.unavailable}
+                freePlanName={plansScreen.plans[0].name}
+                primiumPlanName={plansScreen.plans[1].name}
+                goTo={chooseProgramScreen.route} 
+                joinBtnTxt={plansScreen.joinBtn}
+                {...p}/>
             </div>
           )}
       </div>

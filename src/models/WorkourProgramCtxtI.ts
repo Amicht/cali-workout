@@ -1,12 +1,12 @@
 import { ApiQueryParamsI } from "./ApiQueryParamsI";
 import { ExerciseModel } from "./ExerciseModel";
-import { ProgramMuscleGroups, WorkoutCacheModel } from "./workoutCacheModel";
+import { ProgramMuscleGroups, WorkoutModel } from "./workoutModel";
 
 
 export interface WorkourProgramCtxtI{
     states?:{
         exercises: ExerciseModel[],
-        userProgram:WorkoutCacheModel,
+        userProgram:WorkoutModel,
         isLoading:boolean
     },
     funcs?:{
@@ -16,7 +16,7 @@ export interface WorkourProgramCtxtI{
         checkIsProgramOK: () => boolean,
         getMuscleExercises: (apiCallParams: ApiQueryParamsI) => Promise<void>,
         onProgramInit:() => void,
-        getUserProgram: () => WorkoutCacheModel | null,
+        getUserProgram: () => WorkoutModel | null,
         loadingHandler: (isLoading:boolean) => void;
     }
 }

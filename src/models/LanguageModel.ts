@@ -32,10 +32,12 @@ export interface Plan {
     name: string;
     price: number;
     features: string[];
+    isAvailable:boolean;
 }
 
 export interface PlansScreen {
     route: string;
+    unavailable: string;
     title: Title2[];
     subtitle: string;
     plans: Plan[];
@@ -100,6 +102,12 @@ export interface PTitles2 {
 export interface Txts {
     p_titles: PTitles2;
     start: string;
+    info:{
+        muscle: string;
+        difficulty: string;
+        set: string;
+        exercise: string;
+    }
 }
 
 export interface Workout {

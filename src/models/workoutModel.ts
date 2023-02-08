@@ -24,7 +24,6 @@ export interface ProgramSetDefs{
 }
 
 
-export interface WorkoutCacheModel{
+export interface WorkoutModel{
     mslGrp:ProgramMuscleGroups;
-    sets?:ProgramSetDefs;
 }

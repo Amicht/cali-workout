@@ -16,7 +16,7 @@ function App() {
   const {states} = React.useContext(WorkourProgramCtxt);
   
   return (
-    <div className={`app-direction-${language.direction}`} >
+    <div >
       <AppNavbar />
 
       <div className='container'>

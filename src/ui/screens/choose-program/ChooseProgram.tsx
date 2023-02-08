@@ -25,7 +25,7 @@ const ChooseProgram = () => {
   const [show, setShow] = React.useState(false);
   
   const handleClose = () => {
-    setIsProgramOK(funcs!.checkIsProgramOK());
+    if(!isProgramOK) setIsProgramOK(funcs!.checkIsProgramOK());
     setShow(false);
   }
   
@@ -46,10 +46,14 @@ const ChooseProgram = () => {
 
   const isMslGrpChosen = (mscGrp:string) => {
     
-    if(!!states!.userProgram) return Object.entries(states!.userProgram)
+    if(!!states!.userProgram){ 
+      const checkResult = Object.entries(states!.userProgram)
       .filter(msclGrp => (msclGrp[0] === mscGrp) && (msclGrp[1]  !== null)).length > 0;
-    else return false
+      return !!checkResult;
+    }
+    else return false;
   } 
+
   const onNextBtnClick = () => {
     if(isProgramOK){ navigate(language.workout.route) }
   }
@@ -64,8 +68,12 @@ const ChooseProgram = () => {
 
   return (
     <div className='screen py-3 mt-4'> 
-      <PageTitle title={language.chooseProgramScreen.title} />
-      <PageSubtitle subtitle={language.chooseProgramScreen.subtitle} />
+      <PageTitle 
+        title={language.chooseProgramScreen.title}
+          />
+      <PageSubtitle 
+        subtitle={language.chooseProgramScreen.subtitle}
+        direction={language.direction} />
       <div className='row mb-5'>
           {language.chooseProgramScreen.muscleGroups.map((mscGrp, idx) =>
             <div className='col-md mt-4' key={idx}>
@@ -93,6 +101,7 @@ const ChooseProgram = () => {
 
         </div>
       </div>
+      <div className='dummy-footer-div'></div>
     </div>
   )
 }
