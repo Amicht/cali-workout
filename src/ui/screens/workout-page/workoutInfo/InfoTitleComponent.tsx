@@ -7,7 +7,7 @@ interface Props{
 
 const InfoTitleComponent = ({titleType, value}:Props) => {
   return (
-    <div className='col workout-info'>
+    <div className='col workout-info mt-2'>
         <h6 className='content'>{value}</h6>
         <span className='subtitle'>{titleType}</span>
     </div>
