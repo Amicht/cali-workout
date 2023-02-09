@@ -6,10 +6,14 @@
     .content{
         color: $light;
         font-weight: bold;
-        font-size: 15px;
+        font-size: 30px;
     }
     .subtitle{
-        color: lighten($success, 20%);
+        color: lighten($success, 40%);
+        font-size: 15px;
+    }
+    .difficulty-title{
+        color: lighten($success, 40%);
         font-size: 15px;
     }
 }
