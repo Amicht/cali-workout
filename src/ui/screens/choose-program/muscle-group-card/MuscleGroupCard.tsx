@@ -1,7 +1,7 @@
 import React from 'react'
 import './muscle-group-card.scss'
 import {GiLeg, GiAbdominalArmor, GiChestArmor, GiBiceps } from 'react-icons/gi'
-import Badge from 'react-bootstrap/Badge';
+import {AiOutlineCheck} from 'react-icons/ai';
 import { ProgramMuscleGroups } from '../../../../models/workoutModel';
 
 const icons = {
@@ -23,9 +23,13 @@ const MuscleGroupCard = (props:Props) => {
     const {name, muscles } = props;
 
   return (
-    <div className={`muscle-group-card mx-2 my-2 ${props.isChosen?'is-checked': ""}`}>
-        <h3>
-          <Badge className='checked-bedge' bg="secondary" hidden={!props.isChosen}><span>checked</span></Badge>
+    <div className='muscle-group-card mx-2 my-2'>
+
+        {props.isChosen&&<div className='checked-v mx-auto text-center'>
+          <AiOutlineCheck className='icon' />
+        </div>}
+       
+        <h3 >
           {name} 
         </h3>
         <div className='mb-3 muscle-group-icon'>

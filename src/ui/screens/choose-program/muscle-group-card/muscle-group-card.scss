@@ -20,22 +20,16 @@
     .muscle-group-icon{
         font-size: 60px;
     }
-    .checked-bedge{
-        height: fit-content;
+    .checked-v{
         position: absolute;
-        top: -10px;
-        left: -20px;
-        transform: rotate(330deg);
-        span{
-            font-size: 20px;
-            text-align: center;
-            color: lighten( $primary,20%);
-        }
-    }
-    &.is-checked{
-        border:none;
-        &:hover{
-            color: lighten( $primary,20%);    
+        background-color: transparent;
+        top: 40px;
+        width: 100%;
+        .icon{
+            opacity: 0.8;
+            font-weight: bold;
+            color: $secondary;
+            font-size: 100px;
         }
     }
     ul{

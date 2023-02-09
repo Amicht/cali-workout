@@ -8,19 +8,19 @@ import MuscleGroupModal from './muscle-group-modal/MuscleGroupModal';
 import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramService';
 import { useNavigate } from 'react-router-dom';
 import { LanguageCtst } from '../../../services/context/LanguageService';
-import { ProgramMuscleGroups } from '../../../models/workoutModel';
+import { ProgramMuscleGroups, WorkoutModel } from '../../../models/workoutModel';
 
 
 
 
 const ChooseProgram = () => {
   const {language} = React.useContext(LanguageCtst);
-  const workoutProgramCtxt = React.useContext(WorkourProgramCtxt);
-  const navigate = useNavigate();
+  const {funcs, states} = React.useContext(WorkourProgramCtxt);
   const [muscleChoice, setMuscleChoice] = React.useState<string>("");
   const [currentMuscleGroupName, setCurrentMuscleGroupName] = React.useState<keyof ProgramMuscleGroups | string>("pull");
   const [isProgramOK, setIsProgramOK] = React.useState(false);
-  let {funcs, states} = workoutProgramCtxt;
+  const navigate = useNavigate();
+  
   
   const [show, setShow] = React.useState(false);
   
@@ -44,11 +44,10 @@ const ChooseProgram = () => {
     })
   }
 
-  const isMslGrpChosen = (mscGrp:string) => {
+  const isMslGrpChosen = (mscGrpName:string, userProgram:WorkoutModel) => {
     
-    if(!!states!.userProgram){ 
-      const checkResult = Object.entries(states!.userProgram)
-      .filter(msclGrp => (msclGrp[0] === mscGrp) && (msclGrp[1]  !== null)).length > 0;
+    if(!!userProgram){ 
+      const checkResult = Object.entries(userProgram.mslGrp).filter(msclGrp => (msclGrp[0] === mscGrpName) && (msclGrp[1].exercise  != null)).length > 0;
       return !!checkResult;
     }
     else return false;
@@ -79,7 +78,7 @@ const ChooseProgram = () => {
             <div className='col-md mt-4' key={idx}>
               <MuscleGroupCard 
                 key={idx} 
-                isChosen={isMslGrpChosen(mscGrp.name)} 
+                isChosen={isMslGrpChosen(mscGrp.name, states!.userProgram)} 
                 muscles={mscGrp.muscles}
                 name={mscGrp.name}
                 onMuscleClick={onMuscleClick}/>
