@@ -12,7 +12,6 @@
         }
     },
     "homeScreen": {
-        "route": "/",
         "title": [
             {
                 "txt": "NO EQUIPMENT. NO ",
@@ -30,7 +29,6 @@
         ]
     },
     "plansScreen":{
-        "route": "/get-started",
         "unavailable": "Coming Soon",
         "title": [
             {
@@ -82,7 +80,6 @@
         ]
     },
     "chooseProgramScreen":{
-        "route": "/choose-program",
         "title": [
             {
                 "txt": "CHOOSE ",
@@ -149,7 +146,6 @@
         
     },
     "workout":{
-        "route": "/choose-program/workout",
         "title": [
             {
                 "txt": "IT'S ",
@@ -196,5 +192,15 @@
         ],
         "subtitle": "This Page is not available. stop doing things you are not suppose to be doing and start workout",
         "btnTxt": "Home page"
+    },
+    "about":{
+        "title": "",
+        "subtitle": "",
+        "paragraphs":[
+            {
+                "title": "Circuit training",
+                "content":"\"Circuit training is a form of body conditioning that involves endurance training, resistance training, high-intensity aerobics, and exercises performed in a circuit, similar to high-intensity interval training. It targets strength building and muscular endurance. An exercise \"circuit\" is one completion of all set exercises in the program. When one circuit is completed, one begins the first exercise again for the next circuit. Traditionally, the time between exercises in circuit training is short and often with rapid movement to the next exercise.\" (wikipedia)"
+            }
+        ]
     }
 }

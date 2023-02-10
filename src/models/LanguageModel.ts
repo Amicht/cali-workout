@@ -17,7 +17,6 @@ export interface Title {
 }
 
 export interface HomeScreen {
-    route: string;
     title: Title[];
     subtitle: string;
     actionBtns: string[];
@@ -36,7 +35,6 @@ export interface Plan {
 }
 
 export interface PlansScreen {
-    route: string;
     unavailable: string;
     title: Title2[];
     subtitle: string;
@@ -72,7 +70,6 @@ export interface ModalBtns {
 }
 
 export interface ChooseProgramScreen {
-    route: string;
     title: Title3[];
     nextScreenBtn: string,
     modalTitle: string;
@@ -111,7 +108,6 @@ export interface Txts {
 }
 
 export interface Workout {
-    route: string;
     title: Title4[];
     txts: Txts;
 }
@@ -127,6 +123,18 @@ export interface ErrorPage {
     btnTxt: string;
 }
 
+export interface Paragraph {
+    title: string;
+    content: string;
+}
+
+export interface AboutI {
+    title: string;
+    subtitle: string;
+    paragraphs: Paragraph[];
+}
+
+
 export interface LanguageModel {
     language: string;
     direction: string;
@@ -136,4 +144,5 @@ export interface LanguageModel {
     chooseProgramScreen: ChooseProgramScreen;
     workout: Workout;
     errorPage:ErrorPage;
+    about: AboutI;
 }
