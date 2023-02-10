@@ -1,4 +1,5 @@
 import React from 'react'
+import { appRoutes } from '../../../services/appRoutes';
 import { LanguageCtst } from '../../../services/context/LanguageService';
 import PageSubtitle from '../../components/titles/PageSubtitle';
 import PageTitle from '../../components/titles/PageTitle';
@@ -25,7 +26,7 @@ const GetStarted = () => {
                 unavailable={plansScreen.unavailable}
                 freePlanName={plansScreen.plans[0].name}
                 primiumPlanName={plansScreen.plans[1].name}
-                goTo={chooseProgramScreen.route} 
+                goTo={appRoutes.chooseProgramScreen} 
                 joinBtnTxt={plansScreen.joinBtn}
                 {...p}/>
             </div>

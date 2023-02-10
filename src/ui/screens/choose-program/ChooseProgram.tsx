@@ -9,6 +9,7 @@ import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramServ
 import { useNavigate } from 'react-router-dom';
 import { LanguageCtst } from '../../../services/context/LanguageService';
 import { ProgramMuscleGroups, WorkoutModel } from '../../../models/workoutModel';
+import { appRoutes } from '../../../services/appRoutes';
 
 
 
@@ -54,7 +55,7 @@ const ChooseProgram = () => {
   } 
 
   const onNextBtnClick = () => {
-    if(isProgramOK){ navigate(language.workout.route) }
+    if(isProgramOK){ navigate(appRoutes.workout) }
   }
   
 
