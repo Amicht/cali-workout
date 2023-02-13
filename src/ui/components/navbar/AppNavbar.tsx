@@ -33,6 +33,7 @@ const AppNavbar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto my-2">
             <Link className='link me-3 mt-1' to="/get-started">{language.navbar.get_started}</Link>
+            <Link className='link me-3 mt-1' to="/about">{language.navbar.about}</Link>
             <ChangeLanguageComponent />
           </Nav>
         </Navbar.Collapse>

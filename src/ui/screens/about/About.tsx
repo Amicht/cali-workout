@@ -12,11 +12,11 @@ interface Props{
 const About = ({page:{paragraphs,subtitle,title},direction}:Props) => {
     
   return (
-    <div className='screen'
+    <div className='screen my-5'
         style={{direction: direction==='rtl'? 'rtl':'ltr'}}>
-        {/* <PageTitle title={title}/> */}
+        <PageTitle title={title}/>
         <PageSubtitle subtitle={subtitle}/>
-        {paragraphs.map(p => <div className='pt-4'>
+        {paragraphs.map(p => <div className='pt-4 mt-5'>
             <h4 className='py-2'>{p.title}</h4>
             <p>{p.content}</p>
         </div>)}

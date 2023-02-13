@@ -8,6 +8,7 @@ export interface Navbar {
     icon: string;
     home: string;
     get_started: string;
+    about: string;
     language: Language;
 }
 
@@ -129,7 +130,7 @@ export interface Paragraph {
 }
 
 export interface AboutI {
-    title: string;
+    title: Title[];
     subtitle: string;
     paragraphs: Paragraph[];
 }
