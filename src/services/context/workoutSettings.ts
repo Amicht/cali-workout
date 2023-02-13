@@ -2,13 +2,13 @@ import { WorkoutModel } from "../../models/workoutModel";
 
 
 export const workoutSettings = {
-    startInCounter: 3,
-    exerciseTime: 2,
+    startInCounter: 7,
+    exerciseTime: 60,
     breakTime: {
-        btwnExrc: 2,
-        btwnSets: 2
+        btwnExrc: 10,
+        btwnSets: 40
     },
-    totalSets: 3
+    totalSets: 4
 }
 
 export const initialProgramValue : WorkoutModel = {
