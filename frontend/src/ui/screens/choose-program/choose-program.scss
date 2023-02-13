@@ -1,0 +1,35 @@
+@import '../../../styles/colors';
+
+
+
+
+.muscle-modal{
+
+    .modal-body{
+
+        background: linear-gradient(90deg, darken($success, 10%), $success);
+        .exercise-card{
+            color: $light;
+            margin-top: 10px;
+            padding: 10px;
+            min-height: fit-content;
+            border-radius: 0 0 40px 0;
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 980px) {
+    .bottom-next-btn-bg{
+        margin-top: 50px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: $dark;
+    }
+}
+
+.dummy-footer-div{
+    height: 60px;
+}

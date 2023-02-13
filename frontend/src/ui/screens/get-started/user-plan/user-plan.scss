@@ -1,0 +1,37 @@
+@import '../../../../styles/colors.scss';
+
+.user-plan-card{
+    position:relative;
+    color: $light;
+    margin-top: 10px;
+    padding: 10px 0;
+    border-radius: 0 0 40px 0;
+    background: linear-gradient(90deg, darken($success, 10%), $success);
+    
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.user-plan-card-premium{
+    position:relative;
+    color: $light;
+    margin-top: 10px;
+    padding: 10px 0;
+    border-radius: 0 0 40px 0;
+    background: linear-gradient(90deg, darken($secondary, 10%), $secondary);
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.unavailable-badge{
+    position: absolute;
+    top:30px;
+    right: -20px;
+    transform: rotate(45deg);
+}

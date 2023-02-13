@@ -1,0 +1,18 @@
+@import '../../../../styles/colors';
+
+.workout-info{
+
+    
+    .content{
+        color: $light;
+        font-size: 30px;
+    }
+    .subtitle{
+        color: lighten($success, 40%);
+        font-size: 15px;
+    }
+    .difficulty-title{
+        color: lighten($success, 40%);
+        font-size: 15px;
+    }
+}
