@@ -2,6 +2,8 @@
 
 A full body training app for the 4 muscle groups, combined with circuit training and calisthenics.
 
+#### [Live App](https://cali-app.onrender.com/)
+
 ### Stack:
     - React
     - Typescript
