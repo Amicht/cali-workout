@@ -13,10 +13,12 @@ interface Props{
   muscleGroupName: keyof ProgramMuscleGroups | string,
   muscleName: string 
   handleClose:() => void, 
+  onAddExerciseBtnClicked:() => void, 
 }
 
 const MuscleGroupModal: React.FC<Props> = ({
   handleClose,
+  onAddExerciseBtnClicked,
   muscleGroupName,
   muscleName,
   show
@@ -39,7 +41,9 @@ const MuscleGroupModal: React.FC<Props> = ({
           muscleGroupName,
           exerciseName)
         .then(() => {
-          onCloseHandler()
+          setExercise(null);
+          setExerciseName("");
+          onAddExerciseBtnClicked();
         })
     }
     
@@ -73,7 +77,7 @@ const MuscleGroupModal: React.FC<Props> = ({
                 
                 {(states!.exercises.length > 0)?
                 <Form.Select 
-                  className='col-sm bg-dark text-center text-primary border-secondary' 
+                  className='col-sm bg-secondary text-center text-dark border-dark' 
                   onChange={(e) => onExerciseChange(e.currentTarget.value)}>
 
                 {states!.exercises.map((exrcs:ExerciseModel,idx:number) => 
