@@ -1,7 +1,6 @@
 import React from 'react'
 import './choose-program.scss';
 import MuscleGroupCard from './muscle-group-card/MuscleGroupCard';
-import CostumBtn from '../../components/costum-button/CostumBtn';
 import PageSubtitle from '../../components/titles/PageSubtitle';
 import PageTitle from '../../components/titles/PageTitle';
 import MuscleGroupModal from './muscle-group-modal/MuscleGroupModal';
@@ -10,8 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { LanguageCtst } from '../../../services/context/LanguageService';
 import { ProgramMuscleGroups, WorkoutModel } from '../../../models/workoutModel';
 import { appRoutes } from '../../../services/appRoutes';
-
-
+import StartStepCard from './stepper/StartStepCard';
+import StepBtnComponent from './stepper/StepBtnComponent';
 
 
 const ChooseProgram = () => {
@@ -20,12 +19,18 @@ const ChooseProgram = () => {
   const [muscleChoice, setMuscleChoice] = React.useState<string>("");
   const [currentMuscleGroupName, setCurrentMuscleGroupName] = React.useState<keyof ProgramMuscleGroups | string>("pull");
   const [isProgramOK, setIsProgramOK] = React.useState(false);
+  const [currentStep, setCurrentStep] = React.useState(0);
+  const muscleGroups = language.chooseProgramScreen.muscleGroups;
   const navigate = useNavigate();
+  const startWorkoutStepNumber = 4;
   
   
   const [show, setShow] = React.useState(false);
   
-  const handleClose = () => {
+  const handleClose = () => { setShow(false); }
+
+  const onAddExerciseBtnClicked = () => {
+    setCurrentStep(currentStep + 1);
     if(!isProgramOK) setIsProgramOK(funcs!.checkIsProgramOK());
     setShow(false);
   }
@@ -33,8 +38,8 @@ const ChooseProgram = () => {
   const onMuscleClick = (muscle:string, 
     muscleGrpName:string) => {
     funcs!.loadingHandler(true);    
-    funcs!.getMuscleExercises({muscle})
 
+    funcs!.getMuscleExercises({muscle})
     .then(() => {
       setMuscleChoice(muscle);
       setCurrentMuscleGroupName(muscleGrpName);
@@ -67,41 +72,66 @@ const ChooseProgram = () => {
 
 
   return (
-    <div className='screen py-3 mt-4'> 
+    <div className='screen mt-4'> 
       <PageTitle 
         title={language.chooseProgramScreen.title}
           />
       <PageSubtitle 
         subtitle={language.chooseProgramScreen.subtitle}
         direction={language.direction} />
-      <div className='row mb-5'>
-          {language.chooseProgramScreen.muscleGroups.map((mscGrp, idx) =>
-            <div className='col-md mt-4' key={idx}>
-              <MuscleGroupCard 
-                key={idx} 
-                isChosen={isMslGrpChosen(mscGrp.name, states!.userProgram)} 
-                muscles={mscGrp.muscles}
-                name={mscGrp.name}
-                onMuscleClick={onMuscleClick}/>
-            </div>)}
+
+      <div className='row mb-5 mt-5'>
+
+          <div className='row col-md-9 mx-auto px-auto'>
+            <div className='row mx-auto'>
+
+              {muscleGroups.map((mslGrp, idx) =>
+              <StepBtnComponent 
+                key={mslGrp.name}
+                onStepClick={() => setCurrentStep(idx)}
+                isCurrentStep={currentStep === idx}
+                stepName={mslGrp.name} 
+                isFinished={idx< currentStep && isMslGrpChosen(mslGrp.name, states!.userProgram)} 
+                stepNumber={idx+1} />
+              )}
+
+              <StepBtnComponent 
+                key={"start-step"}
+                onStepClick={() => setCurrentStep(startWorkoutStepNumber)}
+                isCurrentStep={currentStep === startWorkoutStepNumber}
+                stepNumber={startWorkoutStepNumber + 1}
+                stepName={"start!"} 
+                isFinished={isProgramOK} />
+
+            </div>
+
+          
+          {/* muscle-step cards */}
+          {muscleGroups.filter((grp,idx) => idx === currentStep)
+            .map((grp,idx) => 
+              <div className='mx-auto pt-3'><MuscleGroupCard 
+                isChosen={false}
+                muscles={grp.muscles}
+                name={grp.name}
+                onMuscleClick={onMuscleClick}
+                key={grp.name}/></div>)
+          }
+
+          {/* start-workout-step card */}
+          {currentStep === startWorkoutStepNumber? 
+            <StartStepCard isStepsCompleted={isProgramOK}
+              startBtnTxt={language.chooseProgramScreen.nextScreenBtn}/>
+              :null}
+          </div>
+
           <MuscleGroupModal 
+            onAddExerciseBtnClicked={onAddExerciseBtnClicked}
             handleClose={handleClose} 
             show={show} 
             muscleName={muscleChoice} 
             muscleGroupName={currentMuscleGroupName || "pull"}/>
       </div>
-      <div className='bottom-next-btn-bg py-3 mt-3'>
-        <div 
-          onClick={onNextBtnClick} 
-          className={`col-md-4 mx-auto bg-transparent px-2`}>
-
-          <CostumBtn 
-            txt={language.chooseProgramScreen.nextScreenBtn} 
-            theme='light' disabled={!isProgramOK}/>
-
-        </div>
-      </div>
-      <div className='dummy-footer-div'></div>
+      
     </div>
   )
 }
