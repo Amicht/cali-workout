@@ -73,6 +73,8 @@ export interface ModalBtns {
 export interface ChooseProgramScreen {
     title: Title3[];
     nextScreenBtn: string,
+    unCompletedMessage: string,
+    completedMessage: string,
     modalTitle: string;
     subtitle: string;
     muscleGroups: MuscleGroup[];

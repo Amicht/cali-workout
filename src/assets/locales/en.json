@@ -92,8 +92,10 @@
             }
         ],
         "modalTitle": "Select one exercise from list: ",
-        "subtitle": "For each muscle group, choose one exercise from the list, by clicking on a muscle you would like to work on.",
+        "subtitle": "For each muscle group, choose a muscle you would like to work on from the list and click on it. Then select one exercise from the list (on top) by clicking on the 'Add to program' button. You must complete all steps before you can start the workout.",
         "nextScreenBtn": "Start Workout",
+        "unCompletedMessage": "You must complete all 4 steps before you can start workout.",
+        "completedMessage": "You are all set! start workout now?",
         "muscleGroups": [
             {
                 "name": "pull",
