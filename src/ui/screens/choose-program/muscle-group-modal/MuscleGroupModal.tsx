@@ -16,17 +16,13 @@ interface Props{
   onAddExerciseBtnClicked:() => void, 
 }
 
-const MuscleGroupModal: React.FC<Props> = ({
-  handleClose,
-  onAddExerciseBtnClicked,
-  muscleGroupName,
-  muscleName,
-  show
-    }) => {
+const MuscleGroupModal = (props:Props) => {
 
+    const {handleClose,onAddExerciseBtnClicked,muscleGroupName,show} = props;
     const {language} = React.useContext(LanguageCtst);
     const {funcs, states} = React.useContext(WorkourProgramCtxt);
     const screenTxts = language.chooseProgramScreen;
+
     const [exerciseName, setExerciseName] = React.useState<string>("");
     const [exercise, setExercise] = React.useState<ExerciseModel | null>(null);
     const onCloseHandler = () => {
@@ -34,17 +30,15 @@ const MuscleGroupModal: React.FC<Props> = ({
         setExerciseName("");
         handleClose();
       }
-      const onExerciseChange = (exName:string) => setExerciseName(exName);
-      
-      const onAddExerciseBtnClick = () => {
-        funcs!.updateUserExerciseToProgram(
-          muscleGroupName,
-          exerciseName)
-        .then(() => {
-          setExercise(null);
-          setExerciseName("");
-          onAddExerciseBtnClicked();
-        })
+    const onExerciseChange = (exName:string) => setExerciseName(exName);
+    
+    const onAddExerciseBtnClick = () => {
+      funcs!.updateUserExerciseToProgram(muscleGroupName,exerciseName)
+      .then(() => {
+        setExercise(null);
+        setExerciseName("");
+        onAddExerciseBtnClicked();
+      })
     }
     
     React.useEffect( () => {
@@ -71,8 +65,8 @@ const MuscleGroupModal: React.FC<Props> = ({
               style={{direction: language.direction === 'rtl'?'rtl':'ltr'}}
               className='row col-md-10 mx-auto'>
                 <span 
-                  style={{direction: language.direction === 'rtl'?'rtl':'ltr'}}
-                  className='col-sm-5'>{screenTxts.modalTitle} 
+                  className='col-sm-5'>
+                    {screenTxts.modalTitle} 
                 </span>
                 
                 {(states!.exercises.length > 0)?
@@ -81,7 +75,11 @@ const MuscleGroupModal: React.FC<Props> = ({
                   onChange={(e) => onExerciseChange(e.currentTarget.value)}>
 
                 {states!.exercises.map((exrcs:ExerciseModel,idx:number) => 
-                        <option value={exrcs.name} key={idx}>{exrcs.name}</option>
+                      <option 
+                        value={exrcs.name} 
+                        key={idx}>
+                          {exrcs.name}
+                      </option>
                     )}
                 </Form.Select>:null}
            

@@ -4,12 +4,6 @@ import {GiLeg, GiAbdominalArmor, GiChestArmor, GiBiceps } from 'react-icons/gi'
 import {AiOutlineCheck} from 'react-icons/ai';
 import { ProgramMuscleGroups } from '../../../../models/workoutModel';
 
-const icons = {
-  "GiLeg": <GiLeg />,
-  "GiAbdominalArmor": <GiAbdominalArmor />,
-  "GiChestArmor": <GiChestArmor />,
-  "GiBiceps": <GiBiceps />
-}
 
 interface Props{
   name: keyof ProgramMuscleGroups | string,
@@ -20,7 +14,14 @@ interface Props{
 
 
 const MuscleGroupCard = (props:Props) => {
+
     const {name, muscles } = props;
+    const icons = [
+      {name: "squat", icon: <GiLeg />},
+      {name: "core", icon: <GiAbdominalArmor />},
+      {name: "push", icon: <GiChestArmor />},
+      {name: "pull", icon: <GiBiceps />}
+    ]
 
   return (
     <div className='muscle-group-card mx-2 my-2'>
@@ -33,11 +34,10 @@ const MuscleGroupCard = (props:Props) => {
           {name} 
         </h3>
         <div className='mb-3 muscle-group-icon'>
-          {props.name==="squat"?<div>{icons.GiLeg}</div>:null}
-          {props.name==="core"?<div>{icons.GiAbdominalArmor}</div>:null}
-          {props.name==="push"?<div>{icons.GiChestArmor}</div>:null}
-          {props.name==="pull"?<div>{icons.GiBiceps}</div>:null}
+          {icons.filter((i) => i.name === name)
+            .map((i) => <div key={i.name}>{i.icon}</div>)}
         </div>
+        
         <ul>{muscles.map((msl, idx) => 
             <li 
               className='muscle-type text-start mx-5' 

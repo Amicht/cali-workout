@@ -16,7 +16,10 @@ const About = ({page:{paragraphs,subtitle,title},direction}:Props) => {
         style={{direction: direction==='rtl'? 'rtl':'ltr'}}>
         <PageTitle title={title}/>
         <PageSubtitle subtitle={subtitle}/>
-        {paragraphs.map((p) => <div key={p.title} className='pt-4 mt-5'>
+        {paragraphs.map((p) => 
+        <div 
+          key={p.title} 
+          className='pt-4 mt-5'>
             <h4 className='py-2'>{p.title}</h4>
             <p>{p.content}</p>
         </div>)}

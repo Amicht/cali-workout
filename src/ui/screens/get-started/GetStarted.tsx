@@ -14,8 +14,8 @@ const GetStarted = () => {
 
   return (
     <div className='screen py-3 mt-4'>
-      <PageTitle title={plansScreen.title} />
       <div style={{direction: direction === 'rtl'? 'rtl':'ltr'}}>
+        <PageTitle title={plansScreen.title} />
         <PageSubtitle subtitle={plansScreen.subtitle} 
         direction={direction}/>
       </div>

@@ -18,18 +18,18 @@ interface Props{
 const WorkoutSet: React.FC<Props> = ({exrs, isBreak, breakTime, 
     exerciseTime, isCompleted, currentExrc,onTimoutHandler }) => {
 
-        const {language} = React.useContext(LanguageCtst);
+        const {language:{workout:{txts:{p_titles}}}} = React.useContext(LanguageCtst);
     
   return (
     <div>
         {isBreak?
         <Timer 
-            key={0}
+            key={"timer-1"}
             startTime={breakTime} 
             isBreak={isBreak} 
-            onTimoutHandler={onTimoutHandler}/>:
-        <Timer 
-            key={1}
+            onTimoutHandler={onTimoutHandler}/>
+        : <Timer 
+            key={"timer-2"}
             startTime={exerciseTime} 
             isBreak={isBreak} 
             onTimoutHandler={onTimoutHandler}/>
@@ -38,15 +38,15 @@ const WorkoutSet: React.FC<Props> = ({exrs, isBreak, breakTime,
         {!isCompleted?
         <ParagraphTitle 
             titleName={isBreak? 
-                language.workout.txts.p_titles.break:
-                language.workout.txts.p_titles.work}
+                p_titles.break:
+                p_titles.work}
             content={isBreak && currentExrc < exrs.length -1?
                 exrs[currentExrc + 1].name:
                 exrs[currentExrc].name}
          />:
          <ParagraphTitle 
-            titleName={language.workout.txts.p_titles.completed.title}
-            content={language.workout.txts.p_titles.completed.subtitle}
+            titleName={p_titles.completed.title}
+            content={p_titles.completed.subtitle}
          />}
         
     </div>

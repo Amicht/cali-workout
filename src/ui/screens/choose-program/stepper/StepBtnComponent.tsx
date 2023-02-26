@@ -1,6 +1,8 @@
 import React from 'react'
-import { AiOutlineCheck } from 'react-icons/ai'
 import './step-btn.scss';
+import CurrentStepBtn from './step-btns/CurrentStepBtn';
+import StepCheckedBtn from './step-btns/StepCheckedBtn';
+import StepNumberBtn from './step-btns/StepNumberBtn';
 
 interface Props{
     stepNumber: number
@@ -20,29 +22,15 @@ const StepBtnComponent = (props:Props) => {
       className='step-title col-2 d-flex'>
         {!isCurrentStep? 
             isFinished?
-            <div className='step-number step-checked'>
-              <div className='mx-auto text-center'>
-                <AiOutlineCheck />
-              </div>
-            </div>
-            : <div className='step-number'>
-                <div className='mx-auto text-center'>
-                  <div>
-                    {stepNumber}
-                  </div>
-                </div>
-              </div>
+            <StepCheckedBtn />
+            : <StepNumberBtn stepNumber={stepNumber}/> 
 
-          : <div className='step-number current-step'>
-              <div className='mx-auto text-center'>
-                <div className='mx-1'>
-                  {stepNumber}
-                </div>
-              </div>
-            </div>
+          : <CurrentStepBtn  stepNumber={stepNumber}/>
         }
         <div className='mx-2 step-name'>{stepName}</div>
+
         <hr className='col fs-2'/>
+        
     </div>
   )
 }

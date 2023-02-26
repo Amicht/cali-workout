@@ -19,7 +19,7 @@ const CostumBtn = ({txt, side, theme, disabled}:CostumBtnI) => {
   return (
     <button className={`costum-btn 
       ${classes[theme]} ${side}
-      ${disabled? classes.disabled: ""} py-2`}>
+      ${disabled? classes.disabled: ""} py-2 px-3`}>
       {disabled?'':txt}
     </button>
   )

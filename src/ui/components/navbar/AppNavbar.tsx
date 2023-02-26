@@ -5,6 +5,7 @@ import {Navbar, Nav} from 'react-bootstrap/';
 import { Link } from 'react-router-dom';
 import ChangeLanguageComponent from './change-language/ChangeLanguage';
 import { LanguageCtst } from '../../../services/context/LanguageService';
+import { appRoutes } from '../../../services/appRoutes';
 
 
 const AppNavbar = () => {
@@ -31,11 +32,23 @@ const AppNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+
           <Nav className="me-auto my-2">
-            <Link className='link me-3 mt-1' to="/get-started">{language.navbar.get_started}</Link>
-            <Link className='link me-3 mt-1' to="/about">{language.navbar.about}</Link>
+
+            <Link className='link me-3 mt-1' 
+              to={appRoutes.plansScreen}>
+                {language.navbar.get_started}
+            </Link>
+
+            <Link className='link me-3 mt-1' 
+              to={appRoutes.about}>
+                {language.navbar.about}
+            </Link>
+
             <ChangeLanguageComponent />
+
           </Nav>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>

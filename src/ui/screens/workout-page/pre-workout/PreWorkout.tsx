@@ -22,13 +22,13 @@ export const PreWorkout: React.FC<Props> = ({
 
   return (<>
     <ParagraphTitle content={content} titleName={title} />
-        <Timer 
-            key={'start-timer'}
-            startTime={startInCounter}
-            isBreak={true}
-            onTimoutHandler={onTimeoutHandler} 
-        />
-        <h4>{firstExerciseName}</h4>
+    <Timer 
+        key={'start-timer'}
+        startTime={startInCounter}
+        isBreak={true}
+        onTimoutHandler={onTimeoutHandler} 
+    />
+    <h4>{firstExerciseName}</h4>
   </>
     
   )

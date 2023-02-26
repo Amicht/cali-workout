@@ -5,10 +5,8 @@ import PageSubtitle from '../../components/titles/PageSubtitle';
 import PageTitle from '../../components/titles/PageTitle';
 import MuscleGroupModal from './muscle-group-modal/MuscleGroupModal';
 import { WorkourProgramCtxt } from '../../../services/context/WorkoutProgramService';
-import { useNavigate } from 'react-router-dom';
 import { LanguageCtst } from '../../../services/context/LanguageService';
 import { ProgramMuscleGroups, WorkoutModel } from '../../../models/workoutModel';
-import { appRoutes } from '../../../services/appRoutes';
 import StartStepCard from './stepper/StartStepCard';
 import StepBtnComponent from './stepper/StepBtnComponent';
 
@@ -21,7 +19,6 @@ const ChooseProgram = () => {
   const [isProgramOK, setIsProgramOK] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState(0);
   const muscleGroups = language.chooseProgramScreen.muscleGroups;
-  const navigate = useNavigate();
   const startWorkoutStepNumber = 4;
   
   
@@ -58,10 +55,6 @@ const ChooseProgram = () => {
     }
     else return false;
   } 
-
-  const onNextBtnClick = () => {
-    if(isProgramOK){ navigate(appRoutes.workout) }
-  }
   
 
   React.useEffect(() => {
@@ -87,7 +80,7 @@ const ChooseProgram = () => {
 
               {muscleGroups.map((mslGrp, idx) =>
               <StepBtnComponent 
-                key={mslGrp.name}
+                key={mslGrp.name + idx}
                 onStepClick={() => setCurrentStep(idx)}
                 isCurrentStep={currentStep === idx}
                 stepName={mslGrp.name} 
@@ -109,12 +102,15 @@ const ChooseProgram = () => {
           {/* muscle-step cards */}
           {muscleGroups.filter((grp,idx) => idx === currentStep)
             .map((grp,idx) => 
-              <div className='mx-auto pt-3'><MuscleGroupCard 
-                isChosen={false}
-                muscles={grp.muscles}
-                name={grp.name}
-                onMuscleClick={onMuscleClick}
-                key={grp.name}/></div>)
+              <div 
+                className='mx-auto pt-3'
+                key={grp.name}>
+                  <MuscleGroupCard 
+                    isChosen={false}
+                    muscles={grp.muscles}
+                    name={grp.name}
+                    onMuscleClick={onMuscleClick}/>
+              </div>)
           }
 
           {/* start-workout-step card */}

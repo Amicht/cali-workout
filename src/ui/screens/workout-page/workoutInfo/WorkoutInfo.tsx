@@ -24,18 +24,23 @@ const WorkoutInfo = ({
     isBreak}:Props) => {
 
   return (<>
-    {!isBreak && !isWorkoutCompleted? <div className='row workout-info'>
+    {!isBreak && !isWorkoutCompleted? 
+    <div className='row workout-info'>
+        
         <InfoTitleComponent 
             key="info-title-1"
             titleType={language.workout.txts.info.set}
             value={currentSet} />
+
         <div className='col'>
-        <div style={{direction:'ltr'}}>
-            <DifficultyMeter size="col" difficulty={difficulty} />
-            <h4 className='difficulty-title'>{language.workout.txts.info.difficulty}</h4>
+            <div style={{direction:'ltr'}}>
+                <DifficultyMeter size="col" difficulty={difficulty} />
+                <h4 className='difficulty-title'>
+                    {language.workout.txts.info.difficulty}
+                </h4>
+            </div>
         </div>
 
-        </div>
         <InfoTitleComponent 
             key="info-title-3"
             titleType={language.workout.txts.info.exercise}

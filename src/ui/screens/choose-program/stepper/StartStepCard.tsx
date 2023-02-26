@@ -11,9 +11,8 @@ interface Props{
 
 const StartStepCard = ({isStepsCompleted,startBtnTxt}: Props) => {
     const navigate = useNavigate();
-    const {language: {chooseProgramScreen,direction}} = React.useContext(LanguageCtst)
-    const unCompletedMessage = chooseProgramScreen.unCompletedMessage;
-    const completedMessage = chooseProgramScreen.completedMessage;
+    const {language: {chooseProgramScreen:{unCompletedMessage, completedMessage},direction}} = React.useContext(LanguageCtst)
+
 
     const onNextBtnClick = () => {
         if(isStepsCompleted){ navigate(appRoutes.workout) }
